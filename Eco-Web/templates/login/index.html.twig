@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div>Vos identifiants sont incorrects.</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post">
+        <label for="username">E-mail :</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="_password"/>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+        <input type="hidden" name="_target_path" value="{{ path('app') }}"/>
+
+        <button type="submit">Se connecter</button>
+    </form>
+{% endblock %}
