@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+    <h1>S'inscrire en tant qu'instructeur.</h1>
+
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.profilePicture , {
+            label: 'Photo de profil :'
+        }) }}
+        {{ form_row(registrationForm.firstName, {
+            label: 'Prénom :'
+        }) }}
+        {{ form_row(registrationForm.name, {
+            label: 'Nom :'
+        }) }}
+
+        {{ form_row(registrationForm.descriptionSpecialty, {
+            label: 'Description courte sur vos spécialités :'
+        }) }}
+        {{ form_row(registrationForm.email , {
+            label: 'E-mail :'
+        }) }}
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe :'
+        }) }}
+
+
+
+    <button type="submit" class="btn">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
