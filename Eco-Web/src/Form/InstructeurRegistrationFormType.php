@@ -65,7 +65,7 @@ class InstructeurRegistrationFormType extends AbstractType
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
-                        'maxSize' => '4096k',
+                        'maxSize' => '5000k',
                         'mimeTypes' => [
                             'image/jpg',
                             'image/png',

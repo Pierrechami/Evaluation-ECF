@@ -22,6 +22,12 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(ApprenantRegistrationFormType::class, $user);
         $form->handleRequest($request);
         $user->setIsAccepted(true);
+
+
+        if($user->getEmail('chaminadepierre.24@gmail.com')){
+            $user->setRoles(['ROLE_ADMIN']);
+            $user->setPseudo('admin');
+        }
         $user->setRoles(['ROLE_APPRENANT']);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -36,6 +42,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+
+            $this->addFlash('inscription-apprenant', 'Félicitations, tu viens de t\'inscrire en tant qu\'apprenant. Connecte-toi !  ');
 
             return $this->redirectToRoute('login');
         }

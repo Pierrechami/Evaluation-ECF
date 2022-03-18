@@ -1,3 +1,16 @@
+/*  Police d'écriture */
+body {
+ font-family: 'Lato', sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+ font-family: 'Poppins', sans-serif;
+}
+
+
+
+
 /*  Page d'accueil*/
 
 #souligne:hover {
@@ -6,25 +19,50 @@
 
 
 /*  Page de login*/
-.page-log{
+.page-log {
     margin-top: 10%;
-    border-bottom: 1px  solid rgba(42,214,113,0.34);
-    border-left: 1px  solid rgba(42,214,113,0.34);
-    box-shadow: -6px 9px 9px -2px rgba(42,214,113,0.34);
-    -webkit-box-shadow: -6px 9px 9px -2px rgba(42,214,113,0.34);
-    -moz-box-shadow: -6px 9px 9px -2px rgba(42,214,113,0.34);
+    border-bottom: 1px solid rgb(36, 164, 124);
+    border-left: 1px solid rgb(36, 164, 124);
+    box-shadow: -6px 9px 9px -2px rgb(36, 164, 124);
+    -webkit-box-shadow: -6px 9px 9px -2px rgb(36, 164, 124);
+    -moz-box-shadow: -6px 9px 9px -2px rgb(36, 164, 124);
 
 
 }
-.formulaire-log
-{
+
+.formulaire-log {
     margin: auto;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 767px) {
+    .page-log {
+        margin-top: 10%;
+        border-bottom: none;
+        border-left: none;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+    .col-img {
+        display: none;
+    }
 
 }
+
+
+/*Page postuler en tant qu'instructeur */
+.ecoit {
+    color:  rgb(36, 164, 124);
+}
+
+.form_border {
+    border: dashed rgb(36, 164, 124);
+}
+
 
 
