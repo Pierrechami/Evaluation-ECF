@@ -1,8 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eco Web {% endblock %}
+{% block title %}  Eco Web {% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('inscription-instructeur') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
 
 {% endblock %}
 {% block footer %}

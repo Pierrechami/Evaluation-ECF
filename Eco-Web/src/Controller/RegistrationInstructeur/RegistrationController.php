@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    $this->addFlash('error' , $e->getMessage());
+                    $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
 
@@ -59,7 +59,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
-
+            $this->addFlash('inscription-instructeur', 'Félicitations, vous venez de postuler en tant qu\'instructeur.');
             return $this->redirectToRoute('app');
         }
 

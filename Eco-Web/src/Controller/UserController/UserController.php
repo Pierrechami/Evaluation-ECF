@@ -15,11 +15,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UserController extends AbstractController
 {
+
+
     /**
      * @Route("/", name="app_user_index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
+        if ($this->getUser()->getRoles()[0] !== 'ROLE_ADMIN') {
+            return $this->redirectToRoute('app');
+        }
+
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
@@ -30,6 +36,11 @@ class UserController extends AbstractController
      */
     public function new(Request $request, UserRepository $userRepository): Response
     {
+        if ($this->getUser()->getRoles()[0] !== 'ROLE_ADMIN') {
+            return $this->redirectToRoute('app');
+        }
+
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -48,19 +59,32 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user , $id): Response
     {
+
+
+        if ($this->getUser()->getid() == $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN'){
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
 
         ]);
+        }
+        return $this->redirectToRoute('app');
     }
 
     /**
      * @Route("/{id}/edit", name="app_user_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
+    public function edit(Request $request, User $user, UserRepository $userRepository, $id): Response
     {
+
+        if ($this->getUser()->getid() !== $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
+
+            return $this->redirectToRoute('app');
+
+        }
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -77,14 +101,22 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_user_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="app_user_delete", methods={"GET","POST"})
      */
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
+    public function delete(Request $request, User $user, UserRepository $userRepository, $id): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+
+
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $userRepository->remove($user);
         }
 
-        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+
+        if ($this->getUser()->getid() == $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN'){
+
+            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->redirectToRoute('app');
     }
 }
