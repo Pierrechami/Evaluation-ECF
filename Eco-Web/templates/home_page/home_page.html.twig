@@ -8,6 +8,106 @@
             {{ message }}
         </div>
     {% endfor %}
+    {% for message in app.flashes('nouveau-instructeur') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+
+
+    <div>
+        <div class="row  p-5 home-page-border">
+            <div class="col-sm-12 col-md-6  d-flex justify-content-center align-items-center ">
+                <img src="{{ asset('Images/' ~ 'page-accueil.jpg') }}" width="100%" height="100%">
+            </div>
+            <div class="col-sm-12 col-md-6 home-page-text">
+                <p> &emsp;&emsp;&emsp;&emsp;C’est un fait, la crise écologique est devenue une urgence majeure. La
+                    sixième extinction
+                    massive a déjà commencé et le changement climatique se fait de plus en plus ressentir au fil
+                    des années. Mais qu’en est-il d’internet ?
+                    En matière d’émissions de CO2, il pollue 1.5 fois plus que le transport aérien. D’ailleurs, en 20
+                    ans, le poids d’une page web a été multiplié par 115 (source : https://www.greenit.fr/)
+                </p>
+                <p>
+                    &emsp;&emsp;&emsp;&emsp; <strong class="ecoit">ECOIT</strong> est un organisme de formation
+                    fondé en 2017. Son objectif est
+                    d’être une plateforme d’éducation permettant à tout instructeur expert en accessibilité et en
+                    éco-conception web de présenter des modules de cours.
+                </p>
+                <p>
+                    &emsp;&emsp;&emsp;&emsp; À terme, <strong class="ecoit">ECOIT</strong> désire devenir la référence
+                    française pour les développeurs soucieux de leur
+                    impact digital. Et pourquoi pas délivrer enfin un label officiel pour classer les sites web selon
+                    leur empreinte numérique.
+                </p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-sm-12 col-md-4">3</div>
+            <div class="col-sm-12 col-md-4">4</div>
+            <div class="col-sm-12 col-md-4">5</div>
+        </div>
+
+        <div class="row text-center home-page-border ">
+            <div class="col-12">
+                <h1 class="color">Nos étudiants témoignent</h1>
+            </div>
+            <div class="col-sm-12 col-md-4 m-auto">
+                <section class="p-4 d-flex justify-content-center ">
+                    <article class="fond-etudiant " style="width: 100%">
+                        <p class="mt-3">
+                            <img src="{{ asset('Images/' ~ 'etudiant-pierre.png') }}" width="40%" height="40%"
+                                 class="img-etudiant">
+                        </p>
+                        <p><i>“J’ai choisi ECOIT car je connaissais déjà les cours et qu’ils proposaient un
+                                mentor.
+                                Le fait d’être soutenu par quelqu’un qui connaisse le milieu a été déterminant. Dès que
+                                j’ai été diplômé, les appels se sont mis à pleuvoir.”</i></p>
+                        <p><strong>
+                                -Pierre, diplômé "Développeur web full stack"
+                            </strong></p>
+                    </article>
+                </section>
+
+            </div>
+            <div class="col-sm-12 col-md-4 m-auto">
+                <section class="p-4 d-flex justify-content-center ">
+                    <article class="fond-etudiant " style="width: 100%">
+                        <p class="mt-3">
+                            <img src="{{ asset('Images/' ~ 'etudiant-thomas.png') }}" width="40%" height="40%"
+                                 class="img-etudiant">
+                        </p>
+                        <p><i>"En habitant à Tahiti, les écoles étaient loin et j’aurais dû consacrer un budget
+                                important pour y aller ou me loger. La formation en ligne me convenait donc
+                                parfaitement."</i></p>
+                        <p><strong>
+                                -Thomas, diplômé "Développeur back-end PHP/Symfony"
+                            </strong></p>
+                    </article>
+                </section>
+            </div>
+            <div class="col-sm-12 col-md-4 m-auto">
+                <section class="p-4 d-flex justify-content-center">
+                    <article class=" blan " style="width: 100%">
+                        <p class="mt-3">
+                            <img src="{{ asset('Images/' ~ 'etudiant-romain.png') }}" width="40%" height="40%"
+                                 class="img-etudiant">
+                        </p>
+                        <p><i>"Avant ma reconversion, j'étais conseiller de vente dans un sex-shop, mais j'avais fait
+                                le tour.
+                                Il ne faut pas de pré-requis ou de diplôme quelconque pour accéder à cette
+                                formation."</i></p>
+                        <p><strong>
+                                -Romain, diplômé "Développeur front-end HTML/CSS/JavaScript"
+                            </strong></p>
+                    </article>
+                </section>
+
+            </div>
+        </div>
+    </div>
 
 
 

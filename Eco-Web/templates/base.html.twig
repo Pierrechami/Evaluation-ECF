@@ -43,8 +43,12 @@
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="{#  {{ path('adminregister_admin') }} #}" id="souligne">
+                            <a class="nav-link active" href="  {{ path('app_user_index') }} " id="souligne">
                                 Valider un instructeur</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('app_user_new') }}" id="souligne">
+                                Créer un instructeur</a>
                         </li>
 
                     {% elseif is_granted('ROLE_CANDIDAT') %}

@@ -8,6 +8,9 @@ h1, h2, h3, h4, h5, h6 {
  font-family: 'Poppins', sans-serif;
 }
 
+.color {
+    color: rgb(36, 164, 124) ;
+}
 
 
 
@@ -15,6 +18,32 @@ h1, h2, h3, h4, h5, h6 {
 
 #souligne:hover {
     text-decoration: underline;
+    text-decoration-color: rgb(36, 164, 124) ;
+}
+.home-page-text {
+    text-align: justify;
+}
+.home-page-border {
+    background-color:#F8F9FA ;
+    border-radius: 2% ;
+}
+.fond-etudiant {
+
+}
+
+.img-etudiant {
+    clip-path:ellipse(50% 50%);
+
+
+    /*
+
+
+ carrer
+clip-path:ellipse(50% 50%);
+rectangle
+clip-path:ellipse(33% 50%);
+*/
+
 }
 
 
@@ -63,6 +92,8 @@ h1, h2, h3, h4, h5, h6 {
 .form_border {
     border: dashed rgb(36, 164, 124);
 }
+
+
 
 
 
