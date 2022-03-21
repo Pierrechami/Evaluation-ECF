@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}Nouveau instructeur{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+    <div>
+        <div class="row">
+            <div class="col-xs-12 text-center mt-3">
+                <h1>Création d'un instructeur</h1>
+                <p>
+                    <i>Vous êtes sur le point de créer un nouveau profil instructeur, une fois que le formulaire sera
+                        rempli correctement, l'utilisateur aura son compte <strong>instructeur</strong> validé par défaut.
+                    </i>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 d-flex justify-content-center ">
+                {{ include('user/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
 
-    {{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+
+
+    <a href="{{ path('app_user_index') }}" class="float-end">Retour à la liste</a>
 {% endblock %}

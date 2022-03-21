@@ -3,49 +3,52 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>First_name</th>
-                <th>Name</th>
-                <th>Pseudo</th>
-                <th>Profile_picture</th>
-                <th>Description_specialty</th>
-                <th>Is_accepted</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.pseudo }}</td>
-                <td>{{ user.profilePicture }}</td>
-                <td>{{ user.descriptionSpecialty }}</td>
-                <td>{{ user.isAccepted ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="text-center mt-3">Valider les demandes d'instructeurs</h1>
+                <p class="mt-3">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Vous trouverez sur cette liste, les noms, prénoms, et spécialités des instructeur qui n'ont pas
+                    encore été accepté par nos équipes, vous avez la possibilité en tant qu'administrateur du site de
+                    les valider en cliquant directement sur le bouton <strong>modifier</strong>.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table">
+                    <thead>
+                    <tr class="text-center">
+                        <th>E-mail</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Description sur ses spécialités :</th>
+                        <th>Validé</th>
+                        <th>➕</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        {% if user.roles == ["ROLE_INSTRUCTEUR"] %}
+                            {% if user.isAccepted == false %}
+                                <tr class="text-center">
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.firstName }}</td>
+                                    <td>{{ user.name }}</td>
+                                    <td>{{ user.descriptionSpecialty }}</td>
+                                    <td>{{ user.isAccepted ? 'Yes' : '❌' }}</td>
+                                    <td>
+                                        <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-success">Modifier</a>
+                                    </td>
+                                </tr>
+                            {% endif %}
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {#  <a href="{{ path('app_user_new') }}">Create new</a> #}
 {% endblock %}

@@ -1,15 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Validation{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12  mt-3">
+                <h1>Valider l'instructeur </h1>
+                <p> &emsp;&emsp;&emsp;&emsp;Vous êtes sur le point de " valider " l'utilisateur <strong>{{ user.email }}</strong>, pour qu'il
+                    devienne un instructeur, afin de confirmer
+                    l'opération cocher sur la case ci-dessous. Vous avez aussi la possibilité de " supprimer " l'utilisateur
+                    en cliquant sur le bouton "supprimer". </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-success">{{ button_label|default('Mettre à jour') }}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 mt-3">
+                {{ include('user/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('app_user_index') }}" class="float-end">Retour à la liste</a>
 
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_user_index') }}">back to list</a>
-
-    {{ include('user/_delete_form.html.twig') }}
 
 {% endblock %}

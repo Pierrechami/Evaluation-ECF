@@ -1,4 +1,34 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+ {{ form_start(form , {
+     'attr' : {'class' :  'mb-3 mt-3 font-weight-bold text-uppercase '}
+ }) }}
+
+
+                {{ form_row(form.email , {
+                    label: 'E-mail : ',
+                    'attr': {'class': 'mb-3'}
+                }) }}
+                {{ form_row(form.plainPassword, {
+                    label: 'Mot de passe : ',
+                    'attr': {'class': 'mb-3'}
+                }) }}
+
+                {{ form_row(form.firstName, {
+                    label: 'Prénom : ',
+                    'attr': {'class': 'mb-3'}
+                }) }}
+                {{ form_row(form.name, {
+                    label: 'Nom : ',
+                    'attr': {'class': 'mb-3'}
+                }) }}
+
+                {{ form_row(form.descriptionSpecialty, {
+                    label: 'Description courte sur ses spécialités : ',
+                    'attr': {'class': 'mb-3'}
+                }) }}
+                {{ form_row(form.profilePicture , {
+                    label: 'Photo de profil : ' ,
+                    'attr': {'class': 'mb-3'}
+                }) }}
+<button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+
 {{ form_end(form) }}
