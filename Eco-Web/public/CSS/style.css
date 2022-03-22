@@ -11,15 +11,41 @@ h1, h2, h3, h4, h5, h6 {
 .color {
     color: rgb(36, 164, 124) ;
 }
+.color-blue {
+    color: #192166;
+}
+.color-black {
+    color: #000000;
+}
+
+    /*  Page d'accueil*/
+
+.bd-placeholder-img {
+    height: 50vh;
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
 
 
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+.carousel-inner {
+    border-radius: 1% ;
 
-/*  Page d'accueil*/
+}
 
 #souligne:hover {
     text-decoration: underline;
     text-decoration-color: rgb(36, 164, 124) ;
 }
+
+
 .home-page-text {
     text-align: justify;
 }
@@ -27,23 +53,15 @@ h1, h2, h3, h4, h5, h6 {
     background-color:#F8F9FA ;
     border-radius: 2% ;
 }
-.fond-etudiant {
-
+.img-home-page {
+    border-radius: 2%;
 }
+
+
+
 
 .img-etudiant {
     clip-path:ellipse(50% 50%);
-
-
-    /*
-
-
- carrer
-clip-path:ellipse(50% 50%);
-rectangle
-clip-path:ellipse(33% 50%);
-*/
-
 }
 
 
