@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block body %}
+    <h1>Formation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formation.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ formation.title }}</td>
+            </tr>
+            <tr>
+                <th>Picture</th>
+                <td>{{ formation.picture }}</td>
+            </tr>
+            <tr>
+                <th>Teaser_text</th>
+                <td>{{ formation.teaserText }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_formation_index') }}">back to list</a>
+
+
+{% endblock %}

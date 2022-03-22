@@ -17,6 +17,13 @@ h1, h2, h3, h4, h5, h6 {
 .color-black {
     color: #000000;
 }
+.color-white {
+    color : #F8F9FA;
+}
+
+.bg-color-white {
+    background-color: #F8F9FA;
+}
 
     /*  Page d'accueil*/
 
@@ -55,6 +62,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 .img-home-page {
     border-radius: 2%;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
 }
 
 

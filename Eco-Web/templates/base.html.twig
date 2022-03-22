@@ -42,8 +42,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="ok">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{#  {{ path('adminregister_admin') }} #}" id="souligne">Accéder
-                            au cours</a> 
+                        <a class="nav-link active" href="  {{ path('app_formation_index') }} " id="souligne">Accéder
+                            aux formations</a>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
@@ -56,7 +56,12 @@
                         </li>
                     {% elseif is_granted('ROLE_INSTRUCTEUR') %}
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"id="souligne">Créer une formation</a>
+                            <a class="nav-link active" href="{{ path('app_formation_new') }}" id="souligne">Créer une
+                                formation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ path('liste_formations') }}" id="souligne">Mes
+                                formations</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -76,7 +81,7 @@
                 {% elseif is_granted('ROLE_INSTRUCTEUR') %}
                     <ul style="list-style: none;">
                         <li>
-                            <i>Bienvenue {{ app.user.firstName }} {{ app.user.name }}</i>
+                            <i>Bienvenue <strong>{{ app.user.firstName }} {{ app.user.name }}</strong></i>
                         </li>
                         <li>
                             <strong>Rôle :</strong> Instructeur
@@ -91,7 +96,7 @@
                 {% elseif is_granted('ROLE_APPRENANT') %}
                     <ul style="list-style: none;">
                         <li>
-                            <i>Bienvenue {{ app.user.pseudo }}</i>
+                            Bienvenue <i>{{ app.user.pseudo }}</i>
                         </li>
                         <li>
                             <strong>Rôle :</strong> Apprenant
