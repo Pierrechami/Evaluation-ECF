@@ -3,6 +3,11 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('obligation-apprenant') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
 
 
     <div>
@@ -30,7 +35,7 @@
             <div class="col-xs-12 d-flex justify-content-center ">
 
                 {{ form_start(registrationForm , {
-                    'attr' : {'class' :  'mb-3 mt-3 font-weight-bold text-uppercase '}
+                    'attr' : {'class' :  'mb-3 mt-3 font-weight-bold text-uppercase ' , 'style' : 'font-style: italic;'}
                 }) }}
                 {{ form_row(registrationForm.email , {
                     label: 'E-mail :',

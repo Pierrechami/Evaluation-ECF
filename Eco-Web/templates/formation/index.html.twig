@@ -1,79 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Formation index{% endblock %}
+{% block title %}Formations{% endblock %}
 
 {% block body %}
-    <h1>Liste des formations</h1>
-
-
-        {#
-        <div class="row mb-2 mt-2">
-            <div class="col-md-4">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <h3 class="mb-0">{{ formation.title }}</h3>
-                        <p class="card-text mb-auto">{{ formation.teaserText }}</p>
-                        <div class="mb-1 text-muted">Écrit par {{ formation.user.firstname }} {{ formation.user.name }}</div>
-                        <a href="{{ path('app_formation_show', {'id': formation.id}) }}" class="stretched-link" >Accéder à la formation</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block" style="height: auto ; width: auto">
-                        <img src="{{ asset('Formation/' ~  formation.picture ) }}" width="100%" height="100%" class="img-home-page">
-                    </div>
-                </div>
-            </div>
-        </div>
-        #}
+    <h1 class="text-center mt-3 mb-3 color">Liste des formations</h1>
 
         <div class="row" >
-            <div class="col-md d-flex flex-row flex-wrap justify-content-center">
+            <div class="col-md d-flex flex-row flex-wrap justify-content-around">
                 {% for formation in formations %}
-                    <div class="card  m-2" style="overflow:hidden;width: 288px; min-width: 288px">
+                    <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
                         <img src="{{ asset('Formation/' ~  formation.picture ) }}" class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation" style="width:200px;height:260px">
                         <div class="card-body">
-                            <h5 class="card-title">{{ formation.title }}</h5>
+                            <h4 class="card-title">{{ formation.title }}</h4>
                             <p class="card-text description"> {{ formation.teaserText }}</p>
-                            <div style="display: flex; align-items: center; justify-content: space-between">
-                                <a href="#" class="btn btn-primary ">Détails</a>
-                            </div>
+                            <div class="mb-1 text-muted">Ecrit par : {{ formation.user }}</div>
+                        </div>
+                        <div class="btn-access-formation" >
+                            <a href="{{ path('app_formation_show' , {'id' :  formation.id} ) }}" class="btn btn-primary" >Détails</a>
                         </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
 
-
-
-
-
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Picture</th>
-            <th>Teaser_text</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for formation in formations %}
-
-            <tr>
-                <td>{{ formation.id }}</td>
-                <td>{{ formation.title }}</td>
-                <td>{{ formation.picture }}</td>
-                <td>{{ formation.teaserText }}</td>
-                <td>
-                    <a href="{{ path('app_formation_show', {'id': formation.id}) }}">show</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
 {% endblock %}

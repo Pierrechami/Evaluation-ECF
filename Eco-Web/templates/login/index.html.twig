@@ -3,9 +3,7 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-    {% if error %}
-        <div>Vos identifiants sont incorrects.</div>
-    {% endif %}
+
     {% for message in app.flashes('inscription-apprenant') %}
         <div class="alert alert-success">
             {{ message }}
@@ -23,6 +21,9 @@
 
                         <label for="username" class="mt-3"><i> E-mail</i> </label>
                         <input type="text" id="username" name="_username" value="{{ last_username }}" class="mt-3" placeholder="supercodeur@gmail.com"/>
+                    {% if error %}
+                        <small class="form-text text-muted">Vos identifiants sont incorrects.</small>
+                    {% endif %}
 
                     <label for="password" class="mt-3"> <i>Mot de passe</i> </label>
                         <input type="password" id="password" name="_password" class="mt-3" placeholder="*******"/>
