@@ -100,6 +100,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Page de formation */
 
+#search {
+    height: 40px;
+    width: 25%;
+    background-position: left;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+
 .btn-access-formation {
     display: flex;
     flex-direction: column;
