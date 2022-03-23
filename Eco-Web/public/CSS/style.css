@@ -11,6 +11,14 @@ h1, h2, h3, h4, h5, h6 {
 .color {
     color: rgb(36, 164, 124) ;
 }
+
+.color-red {
+    color: #CD3545;
+}
+
+.bg-color-logo {
+    background-color: rgb(36, 164, 124);
+}
 .color-blue {
     color: #192166;
 }
@@ -51,6 +59,11 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: underline;
     text-decoration-color: rgb(36, 164, 124) ;
 }
+.border-formations {
+    box-shadow: -1px 1px 73px -23px rgba(108,117,125,1) inset;
+    -webkit-box-shadow: -1px 1px 73px -23px rgba(108,117,125,1) inset;
+    -moz-box-shadow: -1px 1px 73px -23px rgba(108,117,125,1) inset;
+}
 
 
 .home-page-text {
@@ -83,6 +96,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .img-etudiant {
     clip-path:ellipse(50% 50%);
+}
+
+/*Page de formation */
+
+.btn-access-formation {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    margin-right: 10px;
 }
 
 

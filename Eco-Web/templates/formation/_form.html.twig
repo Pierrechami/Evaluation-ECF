@@ -1,4 +1,6 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_widget(form, {
+        'attr' : {'class' :  'mb-3 mt-3', 'style' : 'font-style: italic; '}
+    }) }}
+    <button class="btn btn-secondary">{{ button_label|default('Poursuivre') }}</button>
 {{ form_end(form) }}

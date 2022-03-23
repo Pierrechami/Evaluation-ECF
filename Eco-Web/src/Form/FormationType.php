@@ -9,19 +9,30 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Length;
 
 class FormationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title' , null , [
+                'label' => 'Titre de la formation '
+            ])
             ->add('teaser_text' , TextareaType::class, [
-                'label' => 'Description courte'
+                'label' => 'Description (250 caractères maximum)',
+                'constraints' => [
+                    new Length([
+                        'max' => 250,
+                        'maxMessage' => 'La description de votre formation ne doit pas dépasser  {{ limit }} caractères.',
+                        // max length allowed by Symfony for security reasons
+                    ]),
+                ],
             ])
             #->add('user')
             ->add('picture', FileType::class, [
                 // unmapped means that this field is not associated to any entity property
+                'label'=> 'Image de la formation' ,
                 // a voir aprés si je le laisse en
                 'mapped' => false,
 

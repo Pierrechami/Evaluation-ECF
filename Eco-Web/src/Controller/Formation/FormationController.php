@@ -103,6 +103,10 @@ class FormationController extends AbstractController
      */
     public function show(Formation $formation): Response
     {
+        if ($this->getUser() == null){
+            $this->addFlash('obligation-apprenant', 'Vous devez vous créer un compte pour pouvoir accéder aux formations.');
+            return $this->redirectToRoute('register_apprenant');
+        }
         return $this->render('formation/show.html.twig', [
             'formation' => $formation,
         ]);
