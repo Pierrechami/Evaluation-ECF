@@ -14,10 +14,10 @@
                     <div class="card-body">
                         <h4 class="card-title">{{ formation.title }}</h4>
                         <p class="card-text description"> {{ formation.teaserText }}</p>
-                        <div class="mb-1 text-muted">Ecrit par : {{ formation.user }}</div>
+                        <div class="mb-1 text-muted">Ecrit par : {{ formation.user.firstname}} {{ formation.user.name }}</div>
                     </div>
                     <div class="btn-access-formation" >
-                        <a href="{{ path('app_formation_show' , {'id' :  formation.id} ) }}" class="btn btn-primary" >Détails</a>
+                        <a href="{{ path('app_formation_edit' , {'id' :  formation.id} ) }}" class="btn btn-primary" >Modifier</a>
                     </div>
                 </div>
             {% endfor %}
