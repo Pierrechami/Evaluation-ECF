@@ -5,6 +5,7 @@ namespace App\Controller\Formation;
 use App\Entity\Formation;
 use App\Form\FormationType;
 use App\Repository\FormationRepository;
+use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -24,7 +25,6 @@ class FormationController extends AbstractController
      */
     public function index(FormationRepository $formationRepository): Response
     {
-        $formationsInstructeur =  $formationRepository->findBy(['user' => $this->getUser()]);
         return $this->render('formation/index.html.twig', [
             'formations' => $formationRepository->findAll(),
         ]);
@@ -89,7 +89,7 @@ class FormationController extends AbstractController
             $formationRepository->add($formation);
 
 
-            return $this->redirectToRoute('app_formation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_section_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('formation/new.html.twig', [
@@ -101,14 +101,17 @@ class FormationController extends AbstractController
     /**
      * @Route("/{id}", name="app_formation_show", methods={"GET"})
      */
-    public function show(Formation $formation): Response
+    public function show(Formation $formation , SectionRepository $sectionRepository , $id): Response
     {
+        $sectionFormation = $sectionRepository->findBy(['formation' => ['id'=> $id]]);
+
         if ($this->getUser() == null){
             $this->addFlash('obligation-apprenant', 'Vous devez vous créer un compte pour pouvoir accéder aux formations.');
             return $this->redirectToRoute('register_apprenant');
         }
         return $this->render('formation/show.html.twig', [
             'formation' => $formation,
+            'sectionsFormation' => $sectionFormation
         ]);
     }
 
