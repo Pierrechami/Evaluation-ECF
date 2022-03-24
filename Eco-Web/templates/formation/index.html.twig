@@ -4,109 +4,35 @@
 
 {% block body %}
     <div class="row mt-2 mb-3 ">
-        <div class=" d-flex justify-content-end" >
+        <div class=" d-flex justify-content-end">
             <img src="{{ asset('Images/search-icon.png') }}" width="40px" height="40px">
             <input type="text" id="search" placeholder="Rechercher une formation..." title="serach formations">
         </div>
     </div>
 
-
     <h1 class="text-center mt-3 mb-3 color">Liste des formations</h1>
 
-        <div class="row" >
-            <div class="col-md d-flex flex-row flex-wrap justify-content-around">
-                {% for formation in formations %}
-                    <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
-                        <img src="{{ asset('Formation/' ~  formation.picture ) }}" class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation" style="width:200px;height:260px">
-                        <div class="card-body" id="card">
-                            <h4 class="card-title">{{ formation.title }}</h4>
-                            <p class="card-text description"> {{ formation.teaserText }}</p>
-                            <div class="mb-1 text-muted">Ecrit par : {{ formation.user.firstname}} {{ formation.user.name }}</div>
-                        </div>
-                        <div class="btn-access-formation" >
-                            <a href="{{ path('app_formation_show' , {'id' :  formation.id} ) }}" class="btn btn-primary" >Détails</a>
-                        </div>
+    <div class="row">
+        <div class="col-md d-flex flex-row flex-wrap justify-content-around">
+            {% for formation in formations %}
+                <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
+                    <img src="{{ asset('Formation/' ~  formation.picture ) }}"
+                         class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation"
+                         style="width:200px;height:260px">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ formation.title }}</h4>
+                        <p class="card-text description"> {{ formation.teaserText }}</p>
+                        <div class="mb-1 text-muted">Ecrit par
+                            : {{ formation.user.firstname }} {{ formation.user.name }}</div>
                     </div>
-                {% endfor %}
-            </div>
+                    <div class="btn-access-formation">
+                        <a href="{{ path('app_formation_show' , {'id' :  formation.id} ) }}" class="btn btn-primary">Détails</a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
+    </div>
+
 
 
 {% endblock %}
-{#
-<!DOCTYPE html>
-<html>
-<head>
-
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-<body>
-
-<h2>Filterable Table</h2>
-<p>Type something in the input field to search the table for first names, last names or emails:</p>
-<input id="myInput" type="text" placeholder="Search..">
-<br><br>
-
-<table>
-    <thead>
-    <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-    </tr>
-    </thead>
-    <tbody id="myTable">
-    <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-    </tr>
-    <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@mail.com</td>
-    </tr>
-    <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@greatstuff.com</td>
-    </tr>
-    <tr>
-        <td>Anja</td>
-        <td>Ravendale</td>
-        <td>a_r@test.com</td>
-    </tr>
-    </tbody>
-</table>
-
-<p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
-
-</body>
-</html>
-#}
