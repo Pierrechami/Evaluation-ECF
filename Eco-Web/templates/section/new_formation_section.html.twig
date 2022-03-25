@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Section{% endblock %}
+{% block title %}Créer une section{% endblock %}
 
 {% block body %}
-    <h1>Create new Section !!!! avec la section d'un formation avant </h1>
+    <h1 class="color text-center ">Créer une section</h1>
+
+    <p> Vous êtes sur le point de créer une nouvelle section pour la formation <strong>"{{ formation }}"</strong>. Veuillez ajouter le titre ci-dessous.</p>
 
 
     {{ form_start(form) }}
     {{ form_widget(form.title) }}
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-success mt-2">{{ button_label|default('Enregistrer') }}</button>
     {{ form_end(form) }}
 
 
-    <a href="{{ path('app_section_index') }}">back to list</a>
+
+  {#   <a href="{{ path('app_section_index') }}">back to list</a>#}
 {% endblock %}

@@ -170,5 +170,12 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+/*Page ajout section pour les instructeurs*/
+.cadre {
+    padding: 2%;
+    border: thick double rgb(36, 164, 124);
+}
+
+
 
 
