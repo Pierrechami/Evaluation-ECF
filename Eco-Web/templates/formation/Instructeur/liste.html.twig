@@ -6,19 +6,30 @@
 
     <h1 class="text-center mt-3 mb-3 color">Mes formations</h1>
 
-    <div class="row" >
+    <div class="row">
         <div class="col-md d-flex flex-row flex-wrap justify-content-around">
             {% for formation in formations %}
                 <div class="card  m-2 border-formations" style="overflow:hidden;width: 288px; min-width: 288px">
-                    <img src="{{ asset('Formation/' ~  formation.picture ) }}" class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation" style="width:200px;height:260px">
+                    <img src="{{ asset('Formation/' ~  formation.picture ) }}"
+                         class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation"
+                         style="width:200px;height:260px">
                     <div class="card-body">
                         <h4 class="card-title">{{ formation.title }}</h4>
                         <p class="card-text description"> {{ formation.teaserText }}</p>
-                        <div class="mb-1 text-muted">Ecrit par : {{ formation.user.firstname}} {{ formation.user.name }}</div>
+                        <div class="mb-1 text-muted">Ecrit par
+                            : {{ formation.user.firstname }} {{ formation.user.name }}</div>
                     </div>
-                    <div class="btn-access-formation" >
-                        <a href="{{ path('app_formation_edit' , {'id' :  formation.id} ) }}" class="btn btn-primary" >Modifier</a>
+                    <div class="d-flex justify-content-center">
+                        <div class="btn-access-formation">
+                            <a class="btn btn-primary" href="{{ path('formation_show_instructeur' , {'id' :  formation.id} ) }}"
+                            >Détails</a>
+                        </div>
+                        <div >
+                               <a href="{{ path('app_formation_edit' , {'id' :  formation.id} ) }}" class="btn btn-success" >Modifier</a>
+
+                        </div>
                     </div>
+
                 </div>
             {% endfor %}
         </div>

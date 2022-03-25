@@ -37,7 +37,7 @@ class FormationController extends AbstractController
      */
     public function liste(FormationRepository $formationRepository): Response
     {
-        if($this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
+        if( $this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
             return $this->redirectToRoute('app');
         }
 
@@ -115,6 +115,35 @@ class FormationController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{id}/instructeur", name="formation_show_instructeur", methods={"GET"})
+     */
+    public function showInstructeur(Formation $formation , SectionRepository $sectionRepository , $id): Response
+    {
+        if($this->getUser() == null){
+            return $this->redirectToRoute('app');
+        }
+
+        $idInstructeur = $this->getUser()->getId();
+        $idInstructeurFormation = $formation->getUser()->getId();
+
+
+        if($this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR'] || $idInstructeur !== $idInstructeurFormation){
+            return $this->redirectToRoute('app');
+        }
+
+        $sectionFormation = $sectionRepository->findBy(['formation' => ['id'=> $id]]);
+
+        if ($this->getUser() == null){
+            $this->addFlash('obligation-apprenant', 'Vous devez vous créer un compte pour pouvoir accéder aux formations.');
+            return $this->redirectToRoute('register_apprenant');
+        }
+        return $this->render('formation/Instructeur/section.html.twig', [
+            'formation' => $formation,
+            'sectionsFormation' => $sectionFormation
+        ]);
+    }
+
 
 
     /**
@@ -122,6 +151,10 @@ class FormationController extends AbstractController
      */
     public function edit(Request $request, Formation $formation, FormationRepository $formationRepository, $id): Response
     {
+        if($this->getUser() == null){
+            return $this->redirectToRoute('app');
+        }
+
         $idInstructeur = $this->getUser()->getId();
         $idInstructeurFormation = $formation->getUser()->getId();
 
@@ -134,7 +167,7 @@ class FormationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formationRepository->add($formation);
-            return $this->redirectToRoute('app_formation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('liste_formations', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('formation/edit.html.twig', [

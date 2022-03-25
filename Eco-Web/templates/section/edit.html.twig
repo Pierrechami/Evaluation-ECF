@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Section{% endblock %}
+{% block title %}Modifier ma section{% endblock %}
 
 {% block body %}
-    <h1>Edit Section</h1>
+    <h1 class="color text-center mt-3">Modifier ma section</h1>
 
-    {{ include('section/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('section/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_section_index') }}">back to list</a>
+    <p class="d-flex justify-content-end"><a href="{{ path('formation_show_instructeur', {'id' : idformation}) }}">Retour</a></p>
 
-    {{ include('section/_delete_form.html.twig') }}
 {% endblock %}

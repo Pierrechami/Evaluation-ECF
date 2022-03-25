@@ -6,7 +6,7 @@
 
     <a href="{{ path('app_formation_index') }}" class="d-flex justify-content-end text-end mt-2">Retour à la liste des formations</a>
 
-    <div class="row mt-4 ">
+    <div class="row mt-4 cadre">
         <div class="col-md-6 d-flex justify-content-center align-items-center">
            <h1 id="souligne"><i>{{ formation.title }}</i></h1>
         </div>
@@ -33,7 +33,7 @@
 
 {% if sectionsFormation == [] %}
     <div class="row mt-2">
-        <div class="col d-flex justify-content-center">
+        <div class="col d-flex justify-content-center alert alert-secondary">
             <p>Il n'y a pas encore de section de créer pour cette formation, mais revient vite, l'instructeur doit être en train de la préparer...</p>
         </div>
 
