@@ -3,6 +3,11 @@
 {% block title %}  Eco Web {% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('formation-fini') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     {% for message in app.flashes('inscription-instructeur') %}
         <div class="alert alert-success">
             {{ message }}
@@ -25,7 +30,7 @@
                 <div class="container">
                     <div class="carousel-caption text-end">
                         <img src="{{ asset('Images/' ~ 'logo-ecoit-removebg.png') }}" >
-                        <p class="color-black"> <strong class="bg-color-white">L'équipe d'ECOIT s'engage à vous encadrer tout au long de votre formation.</strong></p>
+                        <p> <strong class="text-carousel">L'équipe d'ECOIT s'engage à vous encadrer tout au long de votre formation.</strong></p>
                         <p><a class="btn btn-lg btn-success" href="{{ path('login') }}">Se connecter</a></p>
                     </div>
                 </div>
@@ -65,7 +70,7 @@
 
 
 
-    <div>
+    <div class="mt-4">
         <div class="row  p-5 home-page-border">
             <div class="col-sm-12 col-md-6  d-flex justify-content-center align-items-center ">
                 <img src="{{ asset('Images/' ~ 'page-accueil.jpg') }}" width="100%" height="100%" class="img-home-page">
@@ -96,7 +101,7 @@
 
 
 
-        <div class="row mt-3 " >
+        <div class="row mt-4 " >
             <div class="col-12 text-center">
                 <h1 class="color">Nos formations</h1>
             </div>

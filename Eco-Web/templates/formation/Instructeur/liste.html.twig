@@ -3,6 +3,14 @@
 {% block title %}Formation index{% endblock %}
 
 {% block body %}
+<div class="row mt-2">
+    <div class="col d-flex justify-content-center align-items-center alert alert-secondary">
+        <p>Vous n'avez pas la possibilité de <strong>supprimer</strong> une formation, section, ou une leçon, car
+            l'équipe d' <strong class="color"> ECOIT </strong>
+            estime que plusieurs apprenant sont sûrement en train de les consulter. Vous pouvez envoyer un mail au
+            service pédagogique en cliquant <a href="mailto:chaminadepierre.24@gmail.com">ici</a>,  en expliquant les raisons. Les suppressions se feront lors de la sortie
+            de la prochaine newsletter, cela permettra d'avertir les apprenants..</p>
+    </div>
 
     <h1 class="text-center mt-3 mb-3 color">Mes formations</h1>
 
@@ -21,11 +29,13 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="btn-access-formation">
-                            <a class="btn btn-primary" href="{{ path('formation_show_instructeur' , {'id' :  formation.id} ) }}"
+                            <a class="btn btn-primary"
+                               href="{{ path('formation_show_instructeur' , {'id' :  formation.id} ) }}"
                             >Détails</a>
                         </div>
-                        <div >
-                               <a href="{{ path('app_formation_edit' , {'id' :  formation.id} ) }}" class="btn btn-success" >Modifier</a>
+                        <div>
+                            <a href="{{ path('app_formation_edit' , {'id' :  formation.id} ) }}"
+                               class="btn btn-success">Modifier</a>
 
                         </div>
                     </div>
@@ -35,4 +45,4 @@
         </div>
     </div>
 
-{% endblock %}
+    {% endblock %}

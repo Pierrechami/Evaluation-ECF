@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Lesson{% endblock %}
+
+{% block body %}
+    <h1 class="color text-center mb-3 mt-2">Création d'une nouvelle leçon</h1>
+    <div>
+        <p>Vous êtes sur le point de créer une nouvelle leçon pour la section <strong>"{{ lastSection }}"</strong>.</p>
+    </div>
+
+    {{ include('lesson/_form.html.twig') }}
+
+
+
+
+{% endblock %}
