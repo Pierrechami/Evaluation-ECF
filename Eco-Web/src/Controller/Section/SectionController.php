@@ -39,7 +39,7 @@ class SectionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sectionRepository->add($section);
-            return $this->redirectToRoute('app', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_lesson_new', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('section/new.html.twig', [
@@ -63,7 +63,7 @@ class SectionController extends AbstractController
         $formation = $formationRepository->findBy(['id' => $id])[0];
 
 
-        $formationUser =  $formationRepository->findBy(['user' => $this->getUser()]);
+      #  $formationUser =  $formationRepository->findBy(['user' => $this->getUser()]);
         $section = new Section();
         $form = $this->createForm(FormationSection::class, $section);
         $form->handleRequest($request);

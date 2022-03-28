@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lesson{% endblock %}
+
+{% block body %}
+    <h1>Lesson</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lesson.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ lesson.content }}</td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td>{{ lesson.video }}</td>
+            </tr>
+            <tr>
+                <th>Picture1</th>
+                <td>{{ lesson.picture1 }}</td>
+            </tr>
+            <tr>
+                <th>Picture2</th>
+                <td>{{ lesson.picture2 }}</td>
+            </tr>
+            <tr>
+                <th>Picture3</th>
+
+                <td>{{ lesson.picture3 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-center">
+        <iframe width="560" height="315" src="{{ lesson.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+
+    {% if  lesson.picture1   is not null %}
+    <img src="{{ asset('Lesson/' ~ lesson.picture1) }}">
+    {% endif %}
+
+    {% if  lesson.picture2   is not null %}
+        <img src="{{ asset('Lesson/' ~ lesson.picture2) }}">
+    {% endif %}
+
+    {% if  lesson.picture3  is not null %}
+        <img src="{{ asset('Lesson/' ~ lesson.picture3) }}">
+    {% endif %}
+
+
+
+
+
+    <a href="{{ path('app_lesson_index') }}">back to list</a>
+
+    <a href="{{ path('app_lesson_edit', {'id': lesson.id}) }}">edit</a>
+
+    {{ include('lesson/_delete_form.html.twig') }}
+{% endblock %}
