@@ -3,6 +3,7 @@
 namespace App\Controller\Lesson;
 
 use App\Entity\Lesson;
+use App\Entity\Section;
 use App\Form\LessonType;
 use App\Repository\FormationRepository;
 use App\Repository\LessonRepository;
@@ -23,15 +24,15 @@ class LessonController extends AbstractController
     /**
      * @Route("/liste/{id}", name="app_lesson_index", methods={"GET"})
      */
-  /*  public function index(LessonRepository $lessonRepository, $id): Response
-    {
+    /*  public function index(LessonRepository $lessonRepository, $id): Response
+      {
 
 
-        return $this->render('lesson/index.html.twig', [
-            'lessons' => $lessonRepository->findAll(),
-        ]);
-    }
-*/
+          return $this->render('lesson/index.html.twig', [
+              'lessons' => $lessonRepository->findAll(),
+          ]);
+      }
+  */
     /**
      * @Route("/new", name="app_lesson_new", methods={"GET", "POST"})
      */
@@ -130,22 +131,24 @@ class LessonController extends AbstractController
     /**
      * @Route("/new/lesson/{id}", name="new_lesson", methods={"GET", "POST"})
      */
-    public function newLesson(Request $request, LessonRepository $lessonRepository, $id): Response
+    public function newLesson(Request $request, LessonRepository $lessonRepository, $id, SectionRepository $sectionRepository): Response
     {
-
+        $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
 
         $lesson = new Lesson();
         $form = $this->createForm(LessonType::class, $lesson);
         $form->handleRequest($request);
+        $lesson->setSection($sectionEncour);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $lessonRepository->add($lesson);
-            return $this->redirectToRoute('app_lesson_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('liste_lesson_instructeur', ['id' => $sectionEncour->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('lesson/new_section_lesson.html.twig', [
             'lesson' => $lesson,
             'form' => $form,
+            'sectionEncour' => $sectionEncour
         ]);
     }
 
@@ -154,16 +157,36 @@ class LessonController extends AbstractController
      */
     public function show(Lesson $lesson): Response
     {
+        if ($this->getUser() == null) {
+            return $this->redirectToRoute('app');
+        }
+
+        $section = $lesson->getSection()->getId();
+
+        $user = $this->getUser()->getRoles()[0];
+
         return $this->render('lesson/show.html.twig', [
             'lesson' => $lesson,
+            'section' => $section,
+            'user' => $user
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="app_lesson_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Lesson $lesson, LessonRepository $lessonRepository): Response
+    public function edit(Request $request, Lesson $lesson, LessonRepository $lessonRepository, FormationRepository $formationRepository): Response
     {
+
+        $Idformation = $lesson->getSection()->getFormation();
+
+        $iduser = $this->getUser()->getId();
+        $IdUserFormation = $formationRepository->findBy(['id' => $Idformation])[0]->getUser()->getId();
+        if ($iduser !== $IdUserFormation || $this->getUser() == null) {
+            return $this->redirectToRoute('app');
+        }
+
+        $idsection = $lesson->getSection()->getId();
         $form = $this->createForm(LessonType::class, $lesson);
         $form->handleRequest($request);
 
@@ -237,7 +260,8 @@ class LessonController extends AbstractController
 
 
             $lessonRepository->add($lesson);
-            return $this->redirectToRoute('app_lesson_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('liste_lesson_instructeur', ['id' => $idsection], Response::HTTP_SEE_OTHER);
+
         }
 
         return $this->renderForm('lesson/edit.html.twig', [

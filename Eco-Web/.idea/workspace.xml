@@ -3,11 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/src/Controller/Lesson/LessonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Lesson/LessonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationApprenants/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationApprenants/RegistrationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Section/SectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Section/SectionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Lesson.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Lesson.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/LessonType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/LessonType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formation/Instructeur/section.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/Instructeur/section.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lesson/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lesson/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lesson/new_section_lesson.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lesson/new_section_lesson.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/lesson/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lesson/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/section/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/section/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/section/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/section/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/section/new_formation_section.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/section/new_formation_section.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +184,8 @@
       <workItem from="1648194351173" duration="19544000" />
       <workItem from="1648217219280" duration="10960000" />
       <workItem from="1648451762530" duration="19858000" />
-      <workItem from="1648538012827" duration="5976000" />
+      <workItem from="1648538012827" duration="10483000" />
+      <workItem from="1648549643901" duration="13660000" />
     </task>
     <servers />
   </component>

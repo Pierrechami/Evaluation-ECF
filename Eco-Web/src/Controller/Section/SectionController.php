@@ -21,22 +21,53 @@ use Symfony\Component\Routing\Annotation\Route;
 class SectionController extends AbstractController
 {
 
+
+        #liste des leçon par rapport a la section en cours pour les apprenant
     /**
      * @Route("/{id}/liste/lesson", name="liste_lesson", methods={"GET"})
      */
     public function listeLesson($id , SectionRepository $sectionRepository , LessonRepository $lessonRepository): Response
+    {
+        if( $this->getUser() == null){
+            return $this->redirectToRoute('app');
+        }
+
+
+        $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
+        $formationsectionId = $sectionEncour->getFormation()->getId();
+        $lessons = $lessonRepository->findBy(['section' => ['id' => $sectionEncour->getId()]]);
+
+
+        return $this->render('section/index.html.twig', [
+            'sectionEncour' => $sectionEncour,
+            'lessons' => $lessons,
+            'formation' => $formationsectionId
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/liste/lesson/instructeur", name="liste_lesson_instructeur", methods={"GET"})
+     */
+    public function listeLessonInstructeur($id , SectionRepository $sectionRepository , LessonRepository $lessonRepository, FormationRepository $formationRepository): Response
     {
         if( $this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
             return $this->redirectToRoute('app');
         }
 
         $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
+        $formationsectionId = $sectionEncour->getFormation()->getId();
         $lessons = $lessonRepository->findBy(['section' => ['id' => $sectionEncour->getId()]]);
 
 
-        return $this->render('section/index.html.twig', [
+        if ($formationRepository->findBy(['id' => $formationsectionId])[0]->getUser()->getId() !== $this->getUser()->getId()){
+            return $this->redirectToRoute('app');
+        }
+
+
+        return $this->render('formation/instructeur/liste_lesson.html.twig', [
             'sectionEncour' => $sectionEncour,
-            'lessons' => $lessons
+            'lessons' => $lessons,
+            'formation' => $formationsectionId
         ]);
     }
 

@@ -3,7 +3,6 @@
 {% block title %}Formation{% endblock %}
 
 {% block body %}
-
     {% if sectionsFormation == [] %}
         <div class="row mt-2">
             <div class="col d-flex justify-content-center alert alert-secondary">
@@ -48,9 +47,8 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="btn-access-formation">
-                            <a class="btn btn-primary"
-                               href="{{ path('app_section_show' , {'id' :  sectionFormation.id} ) }}"
-                            >Détails</a>
+                            <a href="{{ path('liste_lesson_instructeur', {'id': sectionFormation.id }) }}" class="btn btn-primary" >Acceder au cours</a>
+
                         </div>
                         <div>
                             <a href="{{ path('app_section_edit' , {'id' :  sectionFormation.id} ) }}"

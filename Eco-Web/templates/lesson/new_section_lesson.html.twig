@@ -2,5 +2,10 @@
 {% block title %}Nouvelle leçon{% endblock %}
 
 {% block body %}
+    <h1 class="color text-center ">Créer une leçon</h1>
 
+    <p> Vous êtes sur le point de créer une nouvelle leçon pour la section <strong>"{{ sectionEncour }}"</strong>.</p>
+
+
+   {% include 'lesson/_form.html.twig'  %}
 {% endblock %}

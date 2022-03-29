@@ -21,13 +21,13 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(ApprenantRegistrationFormType::class, $user);
         $form->handleRequest($request);
-        $user->setIsAccepted(true);
 
 
         if($user->getEmail('chaminadepierre.24@gmail.com')){
             $user->setRoles(['ROLE_ADMIN']);
             $user->setPseudo('admin');
         }
+        $user->setIsAccepted(true);
         $user->setRoles(['ROLE_APPRENANT']);
 
         if ($form->isSubmitted() && $form->isValid()) {
