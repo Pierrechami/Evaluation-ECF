@@ -24,7 +24,7 @@
                         <h5 class="card-title">{{ sectionFormation.title }}</h5>
                     </div>
                     <div class="btn-access-formation" >
-                        <a href="#" class="btn btn-primary" >Acceder au cours</a>
+                        <a href="{{ path('liste_lesson', {'id': sectionFormation.id }) }}" class="btn btn-primary" >Acceder au cours</a>
                     </div>
                 </div>
             {% endfor %}

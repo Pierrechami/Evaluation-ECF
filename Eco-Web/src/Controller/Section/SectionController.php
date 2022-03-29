@@ -2,11 +2,13 @@
 
 namespace App\Controller\Section;
 
+use App\Entity\Lesson;
 use App\Entity\User;
 use App\Entity\Section;
 use App\Form\FormationSection;
 use App\Form\SectionType;
 use App\Repository\FormationRepository;
+use App\Repository\LessonRepository;
 use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,6 +21,35 @@ use Symfony\Component\Routing\Annotation\Route;
 class SectionController extends AbstractController
 {
 
+    /**
+     * @Route("/{id}/liste/lesson", name="liste_lesson", methods={"GET"})
+     */
+    public function listeLesson($id , SectionRepository $sectionRepository , LessonRepository $lessonRepository): Response
+    {
+        if( $this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
+            return $this->redirectToRoute('app');
+        }
+
+        $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
+        $lessons = $lessonRepository->findBy(['section' => ['id' => $sectionEncour->getId()]]);
+
+
+        return $this->render('section/index.html.twig', [
+            'sectionEncour' => $sectionEncour,
+            'lessons' => $lessons
+        ]);
+    }
+
+    /*
+    /**
+     * @Route("/{id}", name="app_section_show", methods={"GET"})
+     *//*
+    public function show(Section $section): Response
+    {
+        return $this->render('section/show.html.twig', [
+            'section' => $section,
+        ]);
+    }*/
 
     # changer la route de retour pour que ca ramene a une lecon
 

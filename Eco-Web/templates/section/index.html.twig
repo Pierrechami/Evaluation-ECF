@@ -3,6 +3,45 @@
 {% block title %}Section index{% endblock %}
 
 {% block body %}
+
+    <a href="{{ path('app_formation_index') }}" class="d-flex justify-content-end text-end mt-2">Retour à la liste des formations</a>
+
+    <div class="row mt-4 cadre">
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <h1 id="souligne"><i>{{ formation.title }}</i></h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="{{ asset('Formation/' ~  formation.picture ) }}" class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation" style="width:200px;height:260px">
+        </div>
+    </div>
+
+
+    <div class="row mt-4" >
+        <div class="col-md d-flex flex-row flex-wrap justify-content-around">
+            {% for lesson in lesson %}
+                <div class="card  m-2 border-formations" style="overflow:hidden;width: 288px; min-width: 288px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ sectionFormation.title }}</h5>
+                    </div>
+                    <div class="btn-access-formation" >
+                        <a href="{{ path('liste_lesson', {'id': sectionFormation.id }) }}" class="btn btn-primary" >Acceder au cours</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if sectionsFormation == [] %}
+        <div class="row mt-2">
+            <div class="col d-flex justify-content-center alert alert-secondary">
+                <p>Il n'y a pas encore de section de créer pour cette formation, mais revient vite, l'instructeur doit être en train de la préparer...</p>
+            </div>
+
+        </div>
+    {% endif %}
+
+
+    {#
     <h1>Section index</h1>
 
     <table class="table">
@@ -32,4 +71,5 @@
     </table>
 
     <a href="{{ path('app_section_new') }}">Create new</a>
+    #}
 {% endblock %}

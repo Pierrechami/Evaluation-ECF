@@ -18,17 +18,20 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/lesson")
  */
 class LessonController extends AbstractController
-{
+{/*
+
     /**
-     * @Route("/", name="app_lesson_index", methods={"GET"})
+     * @Route("/liste/{id}", name="app_lesson_index", methods={"GET"})
      */
-    public function index(LessonRepository $lessonRepository): Response
+  /*  public function index(LessonRepository $lessonRepository, $id): Response
     {
+
+
         return $this->render('lesson/index.html.twig', [
             'lessons' => $lessonRepository->findAll(),
         ]);
     }
-
+*/
     /**
      * @Route("/new", name="app_lesson_new", methods={"GET", "POST"})
      */
@@ -53,7 +56,7 @@ class LessonController extends AbstractController
             $picture1 = $form->get('picture1')->getData();
 
             if ($picture1) {
-                $newFilename = uniqid().'.'.$picture1->guessExtension();
+                $newFilename = uniqid() . '.' . $picture1->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
@@ -62,7 +65,7 @@ class LessonController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
 
@@ -73,7 +76,7 @@ class LessonController extends AbstractController
             $picture2 = $form->get('picture2')->getData();
 
             if ($picture2) {
-                $newFilename2 = uniqid().'.'.$picture2->guessExtension();
+                $newFilename2 = uniqid() . '.' . $picture2->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
@@ -82,7 +85,7 @@ class LessonController extends AbstractController
                         $newFilename2
                     );
                 } catch (FileException $e) {
-                    $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
 
@@ -93,7 +96,7 @@ class LessonController extends AbstractController
             $picture3 = $form->get('picture3')->getData();
 
             if ($picture3) {
-                $newFilename3 = uniqid().'.'.$picture3->guessExtension();
+                $newFilename3 = uniqid() . '.' . $picture3->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
@@ -102,14 +105,12 @@ class LessonController extends AbstractController
                         $newFilename3
                     );
                 } catch (FileException $e) {
-                    $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
 
                 $lesson->setPicture3($newFilename3);
             }
-
-
 
 
             $lessonRepository->add($lesson);
@@ -124,26 +125,29 @@ class LessonController extends AbstractController
         ]);
     }
 
-    # Création d'une leçon sans passer par la case "créer une formation"
-    #  /**
-    #    * @Route("/new", name="app_lesson_new", methods={"GET", "POST"})
-    #    */
-    #   public function new(Request $request, LessonRepository $lessonRepository): Response
-    #   {
-    #       $lesson = new Lesson();
-    #       $form = $this->createForm(LessonType::class, $lesson);
-    #      $form->handleRequest($request);
-#
-    #       if ($form->isSubmitted() && $form->isValid()) {
-    #          $lessonRepository->add($lesson);
-    #         return $this->redirectToRoute('app_lesson_index', [], Response::HTTP_SEE_OTHER);
-    #    }
+    #  Création d'une leçon sans passer par la case "créer une formation"
 
-    #   return $this->renderForm('lesson/new.html.twig', [
-    #      'lesson' => $lesson,
-    #     'form' => $form,
-    # ]);
-    # }
+    /**
+     * @Route("/new/lesson/{id}", name="new_lesson", methods={"GET", "POST"})
+     */
+    public function newLesson(Request $request, LessonRepository $lessonRepository, $id): Response
+    {
+
+
+        $lesson = new Lesson();
+        $form = $this->createForm(LessonType::class, $lesson);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $lessonRepository->add($lesson);
+            return $this->redirectToRoute('app_lesson_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('lesson/new_section_lesson.html.twig', [
+            'lesson' => $lesson,
+            'form' => $form,
+        ]);
+    }
 
     /**
      * @Route("/{id}", name="app_lesson_show", methods={"GET"})
@@ -164,6 +168,74 @@ class LessonController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $picture1 */
+            $picture1 = $form->get('picture1')->getData();
+
+            if ($picture1) {
+                $newFilename = uniqid() . '.' . $picture1->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $picture1->move(
+                        $this->getParameter('kernel.project_dir') . '/public/Lesson',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
+                }
+
+
+                $lesson->setPicture1($newFilename);
+            } else {
+                $lesson->setPicture1(null);
+            }
+
+            /** @var UploadedFile $picture2 */
+            $picture2 = $form->get('picture2')->getData();
+
+            if ($picture2) {
+                $newFilename2 = uniqid() . '.' . $picture2->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $picture2->move(
+                        $this->getParameter('kernel.project_dir') . '/public/Lesson',
+                        $newFilename2
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
+                }
+
+
+                $lesson->setPicture2($newFilename2);
+            } else {
+                $lesson->setPicture2(null);
+            }
+
+            /** @var UploadedFile $picture3 */
+            $picture3 = $form->get('picture3')->getData();
+
+            if ($picture3) {
+                $newFilename3 = uniqid() . '.' . $picture3->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $picture3->move(
+                        $this->getParameter('kernel.project_dir') . '/public/Lesson',
+                        $newFilename3
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
+                }
+
+
+                $lesson->setPicture3($newFilename3);
+            } else {
+                $lesson->setPicture3(null);
+            }
+
+
             $lessonRepository->add($lesson);
             return $this->redirectToRoute('app_lesson_index', [], Response::HTTP_SEE_OTHER);
         }
