@@ -16,6 +16,9 @@ class LessonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('title' , TextType::class, [
+                'label' => 'Titre de la leçon'
+            ])
             ->add('content', TextareaType::class, [
                 'label' => 'Rédigez le contenu du cours'
             ])
