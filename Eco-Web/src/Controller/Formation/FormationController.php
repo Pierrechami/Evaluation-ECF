@@ -54,7 +54,7 @@ class FormationController extends AbstractController
      */
     public function new(Request $request, FormationRepository $formationRepository): Response
     {
-        if($this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
+        if($this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
             return $this->redirectToRoute('app');
         }
 

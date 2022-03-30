@@ -71,18 +71,6 @@ class SectionController extends AbstractController
         ]);
     }
 
-    /*
-    /**
-     * @Route("/{id}", name="app_section_show", methods={"GET"})
-     *//*
-    public function show(Section $section): Response
-    {
-        return $this->render('section/show.html.twig', [
-            'section' => $section,
-        ]);
-    }*/
-
-    # changer la route de retour pour que ca ramene a une lecon
 
     /**
      * @Route("/new", name="app_section_new", methods={"GET", "POST"})
@@ -124,8 +112,10 @@ class SectionController extends AbstractController
 
         $formation = $formationRepository->findBy(['id' => $id])[0];
 
+        if($formation->getUser()->getId() !== $this->getUser()->getId()){
+            return $this->redirectToRoute('app');
+        }
 
-      #  $formationUser =  $formationRepository->findBy(['user' => $this->getUser()]);
         $section = new Section();
         $form = $this->createForm(FormationSection::class, $section);
         $form->handleRequest($request);

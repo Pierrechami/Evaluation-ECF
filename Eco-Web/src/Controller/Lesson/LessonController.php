@@ -19,20 +19,8 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/lesson")
  */
 class LessonController extends AbstractController
-{/*
+{
 
-    /**
-     * @Route("/liste/{id}", name="app_lesson_index", methods={"GET"})
-     */
-    /*  public function index(LessonRepository $lessonRepository, $id): Response
-      {
-
-
-          return $this->render('lesson/index.html.twig', [
-              'lessons' => $lessonRepository->findAll(),
-          ]);
-      }
-  */
     /**
      * @Route("/new", name="app_lesson_new", methods={"GET", "POST"})
      */
@@ -41,6 +29,7 @@ class LessonController extends AbstractController
         if ($this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']) {
             return $this->redirectToRoute('app');
         }
+
 
         $lastformationUser = $formationRepository->findBy(['user' => $this->getUser()], ['id' => 'desc'], 1)[0]->getId();
         $lastSection = $sectionRepository->findBy(['formation' => ['id' => $lastformationUser]])[0];
@@ -131,9 +120,20 @@ class LessonController extends AbstractController
     /**
      * @Route("/new/lesson/{id}", name="new_lesson", methods={"GET", "POST"})
      */
-    public function newLesson(Request $request, LessonRepository $lessonRepository, $id, SectionRepository $sectionRepository): Response
+    public function newLesson(Request $request, LessonRepository $lessonRepository, $id, SectionRepository $sectionRepository, FormationRepository $formationRepository): Response
     {
+
+        if ($this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']) {
+            return $this->redirectToRoute('app');
+        }
+
         $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
+
+        $idFormation = $sectionEncour->getFormation()->getId();
+
+        if($formationRepository->findBy(['id' => $idFormation])[0]->getUser()->getId() !== $this->getUser()->getId()){
+            return $this->redirectToRoute('app');
+        }
 
         $lesson = new Lesson();
         $form = $this->createForm(LessonType::class, $lesson);
@@ -177,12 +177,16 @@ class LessonController extends AbstractController
      */
     public function edit(Request $request, Lesson $lesson, LessonRepository $lessonRepository, FormationRepository $formationRepository): Response
     {
+        if ($this->getUser() == null){
+            return $this->redirectToRoute('app');
+
+        }
 
         $Idformation = $lesson->getSection()->getFormation();
 
         $iduser = $this->getUser()->getId();
         $IdUserFormation = $formationRepository->findBy(['id' => $Idformation])[0]->getUser()->getId();
-        if ($iduser !== $IdUserFormation || $this->getUser() == null) {
+        if ($iduser !== $IdUserFormation) {
             return $this->redirectToRoute('app');
         }
 
