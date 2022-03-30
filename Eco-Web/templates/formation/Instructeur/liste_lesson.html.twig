@@ -3,7 +3,6 @@
 {% block title %}Section index{% endblock %}
 
 {% block body %}
-
     <a href="{{ path('app_formation_show', {'id' : formation}) }}" class="d-flex justify-content-end text-end mt-2">Retour aux sections</a>
 
     <h1 class="color text-center">{{ sectionEncour }}</h1>
@@ -33,42 +32,11 @@
     {% if lessons == [] %}
         <div class="row mt-2">
             <div class="col d-flex justify-content-center alert alert-secondary">
-                <p>Il n'y a pas encore de leçons de créer pour cette section, mais revient vite, l'instructeur doit être en train de la préparer...</p>
+                <p>Vous n'avez pas encore déposé de leçon pour cette section.</p>
             </div>
 
         </div>
     {% endif %}
 
 
-    {#
-    <h1>Section index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for section in sections %}
-            <tr>
-                <td>{{ section.id }}</td>
-                <td>{{ section.title }}</td>
-                <td>
-                    <a href="{{ path('app_section_show', {'id': section.id}) }}">show</a>
-                    <a href="{{ path('app_section_edit', {'id': section.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_section_new') }}">Create new</a>
-    #}
 {% endblock %}
