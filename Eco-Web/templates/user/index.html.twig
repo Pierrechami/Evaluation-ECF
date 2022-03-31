@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
                     {% for user in users %}
-                        {% if user.roles == ["ROLE_INSTRUCTEUR"] %}
+                        {% if user.roles == ["ROLE_POSTULANT"] %}
                             {% if user.isAccepted == false %}
                                 <tr class="text-center">
                                     <td>{{ user.email }}</td>
@@ -41,7 +41,6 @@
                                     </td>
                                 </tr>
                             {% endif %}
-
                         {% endif %}
                     {% endfor %}
                     </tbody>

@@ -36,6 +36,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /*Page de base */
 
+#souligne:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(36, 164, 124) ;
+}
+
+.lien-postulant {
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+}
 
 
     /*  Page d'accueil*/
@@ -67,10 +77,7 @@ h1, h2, h3, h4, h5, h6 {
     color: black !important;
 }
 
-#souligne:hover {
-    text-decoration: underline;
-    text-decoration-color: rgb(36, 164, 124) ;
-}
+
 .border-formations {
     box-shadow: -1px 1px 73px -23px rgba(108,117,125,1) inset;
     -webkit-box-shadow: -1px 1px 73px -23px rgba(108,117,125,1) inset;

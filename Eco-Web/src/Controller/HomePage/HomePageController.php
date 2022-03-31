@@ -14,9 +14,10 @@ class HomePageController extends AbstractController
      */
     public function index(FormationRepository $formationRepository): Response
     {
-    $formations = $formationRepository->findBy([], ['id' => 'desc'], 3 );
+        $formations = $formationRepository->findBy([], ['id' => 'desc'], 3);
         return $this->render('home_page/home_page.html.twig', [
-            'formations'=>$formations
+            'formations' => $formations
         ]);
+
     }
 }

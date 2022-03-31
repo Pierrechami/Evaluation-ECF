@@ -127,6 +127,7 @@ class UserController extends AbstractController
 
             $form = $this->createForm(ValidationInstructeurs::class, $user);
             $form->handleRequest($request);
+            $user->setRoles(['ROLE_INSTRUCTEUR']);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $userRepository->add($user);
