@@ -2,29 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Lesson;
+use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SectionLesson extends AbstractType
+class CommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+           # ->add('user')
             ->add('content')
-            ->add('video')
-            ->add('picture1')
-            ->add('picture2')
-            ->add('picture3')
-          #  ->add('section')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Lesson::class,
+            'data_class' => Comment::class,
         ]);
     }
 }

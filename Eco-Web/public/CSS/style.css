@@ -196,5 +196,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/*Page de leçons*/
 
+.espace-commentaire {
+    border: 1px solid black;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
 
