@@ -62,6 +62,15 @@
                             <a class="nav-link active" href="{{ path('liste_formations') }}" id="souligne">Mes
                                 formations</a>
                         </li>
+                    {% elseif is_granted('ROLE_POSTULANT') %}
+                        <li class="nav-item">
+                            <a class="nav-link lien-postulant" href="#" >Créer une
+                                formation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  lien-postulant" href="#">Mes
+                                formations</a>
+                        </li>
                     {% endif %}
                 </ul>
 
@@ -84,6 +93,19 @@
                         </li>
                         <li>
                             <strong>Rôle :</strong> Instructeur
+                        </li>
+                        <li>
+                            <a class="link-danger" href="{{ path('logout') }}">Déconnexion</a>
+                        </li>
+                    </ul>
+
+                {% elseif is_granted('ROLE_POSTULANT') %}
+                    <ul style="list-style: none;">
+                        <li>
+                            <i>Bienvenue <strong>{{ app.user.firstName }} {{ app.user.name }}</strong></i>
+                        </li>
+                        <li>
+                            <strong>Statut :</strong> en attente de validation
                         </li>
                         <li>
                             <a class="link-danger" href="{{ path('logout') }}">Déconnexion</a>
