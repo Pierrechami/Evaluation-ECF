@@ -2,9 +2,12 @@
 
 namespace App\Controller\Lesson;
 
+use App\Entity\Comment;
 use App\Entity\Lesson;
 use App\Entity\Section;
+use App\Form\CommentType;
 use App\Form\LessonType;
+use App\Repository\CommentRepository;
 use App\Repository\FormationRepository;
 use App\Repository\LessonRepository;
 use App\Repository\SectionRepository;
@@ -153,9 +156,9 @@ class LessonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_lesson_show", methods={"GET"})
+     * @Route("/{id}", name="app_lesson_show",  methods={"GET", "POST"})
      */
-    public function show(Lesson $lesson): Response
+    public function show(Lesson $lesson, Request $request, CommentRepository $commentRepository, $id): Response
     {
         if ($this->getUser() == null) {
             return $this->redirectToRoute('app');
@@ -165,10 +168,32 @@ class LessonController extends AbstractController
 
         $user = $this->getUser()->getRoles()[0];
 
+
+
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        $comment->setUser($this->getUser());
+        $comment->setLesson($lesson);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentRepository->add($comment);
+            $this->addFlash('commentaire', 'Votre commentaire a bien été pris en compte !');
+
+            return $this->redirectToRoute('app_lesson_show', ['id' => $id ], Response::HTTP_SEE_OTHER);
+        }
+
+        $commentaires = $commentRepository->findBy(['lesson' => ['id' => $id]]);
+
+
         return $this->render('lesson/show.html.twig', [
             'lesson' => $lesson,
             'section' => $section,
-            'user' => $user
+            'user' => $user,
+            'comment' => $comment,
+            'form' => $form->createView(),
+            'commentaires' => $commentaires
+
         ]);
     }
 
@@ -274,9 +299,10 @@ class LessonController extends AbstractController
         ]);
     }
 
+    /*
     /**
      * @Route("/{id}", name="app_lesson_delete", methods={"POST"})
-     */
+     */ /*
     public function delete(Request $request, Lesson $lesson, LessonRepository $lessonRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $lesson->getId(), $request->request->get('_token'))) {
@@ -285,4 +311,5 @@ class LessonController extends AbstractController
 
         return $this->redirectToRoute('app_lesson_index', [], Response::HTTP_SEE_OTHER);
     }
+ */
 }
