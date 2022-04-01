@@ -183,7 +183,7 @@ class LessonController extends AbstractController
             return $this->redirectToRoute('app_lesson_show', ['id' => $id ], Response::HTTP_SEE_OTHER);
         }
 
-        $commentaires = $commentRepository->findBy(['lesson' => ['id' => $id]]);
+        $commentaires = $commentRepository->findBy(['lesson' => ['id' => $id]] , ['id' => 'DESC']);
 
 
         return $this->render('lesson/show.html.twig', [

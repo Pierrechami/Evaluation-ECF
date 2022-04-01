@@ -6,7 +6,8 @@
     {% if app.user is not null %}
         {% if app.user.isAccepted == false %}
             <div class="alert alert-danger" role="alert">
-                Bonjour {{ app.user.firstname }} {{ app.user.name }}, votre compte <strong>instructeur</strong> n'as pas encore été validé par nos services, vous ne pouvez pas
+                Bonjour {{ app.user.firstname }} {{ app.user.name }}, votre compte <strong>instructeur</strong> n'as pas
+                encore été validé par nos services, vous ne pouvez pas
                 rédiger de formation pour le moment. Rassurez-vous, vous avez la possibilité de consulter des formations
                 si vous le souhaitez !
             </div>
@@ -203,5 +204,5 @@
 
 {% endblock %}
 {% block footer %}
-
+    {% include 'footer.html.twig' %}
 {% endblock %}
