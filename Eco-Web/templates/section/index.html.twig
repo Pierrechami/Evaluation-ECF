@@ -5,8 +5,12 @@
 {% block body %}
     <a href="{{ path('app_formation_show', {'id' : formation}) }}" class="d-flex justify-content-end text-end mt-2">Retour à la formation</a>
 
+
     <h1 class="color text-center">{{ sectionEncour }}</h1>
 
+    <div class="d-flex justify-content-end mt-3">
+{#        <a href="{{ path('app_quiz_edit', {'quizz' : sectionEncour.id }) }}"><btn class="btn btn-primary">Quiz fin de section</btn></a> #}
+    </div>
     <div class="row mt-4" >
         <div class="col-md d-flex flex-row flex-wrap justify-content-around">
             {% for lesson in lessons %}

@@ -6,8 +6,10 @@
     <a href="{{ path('app_formation_show', {'id' : formation}) }}" class="d-flex justify-content-end text-end mt-2">Retour aux sections</a>
 
     <h1 class="color text-center">{{ sectionEncour }}</h1>
-    <div class="d-flex justify-content-end mt-3">
+    <div class="d-flex justify-content-around mt-3">
        <a href="{{ path('new_lesson', {'id' : sectionEncour.id }) }}"><btn class="btn btn-primary">Ajouter une leçon</btn></a>
+        <a href="{{ path('app_quiz_new', {'id' : sectionEncour.id }) }}"><btn class="btn btn-primary">Ajouter une question</btn></a>
+
     </div>
     <div class="row mt-4" >
         <div class="col-md d-flex flex-row flex-wrap justify-content-around">

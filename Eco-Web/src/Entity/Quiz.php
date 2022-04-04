@@ -23,19 +23,19 @@ class Quiz
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
-    private $response1;
+    private $good;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
-    private $response2;
+    private $no_good;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $good_response;
+    private $good_reponse;
 
     /**
      * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="quizzes")
@@ -60,38 +60,38 @@ class Quiz
         return $this;
     }
 
-    public function getResponse1(): ?string
+    public function getGood(): ?bool
     {
-        return $this->response1;
+        return $this->good;
     }
 
-    public function setResponse1(string $response1): self
+    public function setGood(bool $good): self
     {
-        $this->response1 = $response1;
+        $this->good = $good;
 
         return $this;
     }
 
-    public function getResponse2(): ?string
+    public function getNoGood(): ?bool
     {
-        return $this->response2;
+        return $this->no_good;
     }
 
-    public function setResponse2(string $response2): self
+    public function setNoGood(bool $no_good): self
     {
-        $this->response2 = $response2;
+        $this->no_good = $no_good;
 
         return $this;
     }
 
-    public function getGoodResponse(): ?string
+    public function getGoodReponse(): ?string
     {
-        return $this->good_response;
+        return $this->good_reponse;
     }
 
-    public function setGoodResponse(string $good_response): self
+    public function setGoodReponse(?string $good_reponse): self
     {
-        $this->good_response = $good_response;
+        $this->good_reponse = $good_reponse;
 
         return $this;
     }

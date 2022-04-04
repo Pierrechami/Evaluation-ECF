@@ -40,10 +40,12 @@ class Section
      */
     private $quizzes;
 
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
         $this->quizzes = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -105,6 +107,20 @@ class Section
         return $this;
     }
 
+
+
+
+
+
+
+    public function __toString()
+    {
+        // to show the name of the Category in the select
+        return (string) $this->title;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
     /**
      * @return Collection<int, Quiz>
      */
@@ -133,13 +149,5 @@ class Section
         }
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        // to show the name of the Category in the select
-        return (string) $this->title;
-        // to show the id of the Category in the select
-        // return $this->id;
     }
 }

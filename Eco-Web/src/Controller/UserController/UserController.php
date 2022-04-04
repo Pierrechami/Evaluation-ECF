@@ -69,7 +69,7 @@ class UserController extends AbstractController
             $photoProfil = $form->get('profilePicture')->getData();
 
             if ($photoProfil) {
-                $newFilename = uniqid().'.'.$photoProfil->guessExtension();
+                $newFilename = uniqid() . '.' . $photoProfil->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
@@ -78,7 +78,7 @@ class UserController extends AbstractController
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
 
@@ -103,16 +103,16 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
-    public function show(User $user , $id): Response
+    public function show(User $user, $id): Response
     {
 
 
-        if ($this->getUser()->getid() == $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN'){
+        if ($this->getUser()->getid() == $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
 
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
+            return $this->render('user/show.html.twig', [
+                'user' => $user,
 
-        ]);
+            ]);
         }
         return $this->redirectToRoute('app');
     }
@@ -127,7 +127,9 @@ class UserController extends AbstractController
 
             $form = $this->createForm(ValidationInstructeurs::class, $user);
             $form->handleRequest($request);
-            $user->setRoles(['ROLE_INSTRUCTEUR']);
+            if ($user->getIsAccepted() == true) {
+                $user->setRoles(['ROLE_INSTRUCTEUR']);
+            }
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $userRepository->add($user);
@@ -155,7 +157,7 @@ class UserController extends AbstractController
         }
 
 
-        if ($this->getUser()->getid() == $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN'){
+        if ($this->getUser()->getid() == $id || $this->getUser()->getRoles()[0] == 'ROLE_ADMIN') {
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
