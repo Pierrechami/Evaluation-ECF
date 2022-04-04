@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 /*  Police d'écriture */
 body {
  font-family: 'Lato', sans-serif;
@@ -35,6 +39,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*Page de base */
+.contenue {
+    min-height: 100%;
+    position: relative ;
+}
 
 #souligne:hover {
     text-decoration: underline;
@@ -47,10 +55,6 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.logo-reseaux {
-    height: 5vh;
-    width: 2.5vw;
-}
 
 
 
@@ -211,3 +215,21 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
 }
 
+
+/*Footer */
+@media screen and (min-width: 770px) and (min-height: 1100px) {
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+}
+
+
+.logo-reseaux {
+    height: 50px;
+    width: 50px;
+}
