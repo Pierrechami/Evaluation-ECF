@@ -3,7 +3,56 @@
 {% block title %}Quiz index{% endblock %}
 
 {% block body %}
-    <h1>Quiz index</h1>
+    <h1 class="color text-center mt-4">Résultat du quiz</h1>
+
+
+{{ dump(quizInstructeur) }}
+    {{ dump(quizApprenant) }}
+
+    {{ dump(quizApprenant.response1) }}
+
+    <div>
+        <p>{{ quizApprenant.question1 }}</p>
+        <p> {% if quizApprenant.response1 == quizInstructeur.response1 %}
+Bravo ! Vous avez répondu correctement, la réponse été bien = {{ quizInstructeur.response1 }}
+                {% else %}
+                    Dommage ! Vous n'avez pas répondu correctement, la réponse été bien = {{ quizInstructeur.response1 ? 'Vrais' : 'Faux'}}
+
+            {% endif %}
+            {% if  quizInstructeur.not_good1 is defined  %}
+        <p> <strong>Explication :</strong> {{ quizInstructeur.not_good1  }}</p>
+            {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <p>{{ quizApprenant.question2 }}</p>
+        <p> {% if quizApprenant.response2 == quizInstructeur.response2 %}
+                Bravo ! Vous avez répondu correctement, la réponse été bien = {{ quizInstructeur.response2 }}
+            {% else %}
+                Dommage ! Vous n'avez pas répondu correctement, la réponse été bien = {{ quizInstructeur.response2 ? 'Vrais' : 'no'}}
+            {% endif %}
+            {% if  quizInstructeur.not_good1 is defined  %}
+        <p> <strong>Explication :</strong> {{ quizInstructeur.not_good2  }}</p>
+        {% endif %}
+        </p>
+    </div>
+
+    <div>
+        <p>{{ quizApprenant.question3 }}</p>
+        <p> {% if quizApprenant.response2 == quizInstructeur.response3 %}
+                Bravo ! Vous avez répondu correctement, la réponse été bien = {{ quizInstructeur.response3 }}
+            {% else %}
+                Dommage ! Vous n'avez pas répondu correctement, la réponse été bien = {{ quizInstructeur.response3 ? 'Vrais' : 'Faux'}}
+
+            {% endif %}
+            {% if  quizInstructeur.not_good1 is defined  %}
+        <p> <strong>Explication :</strong> {{ quizInstructeur.not_good3  }}</p>
+        {% endif %}
+        </p>
+    </div>
+
+    {#
 
     <table class="table">
         <thead>
@@ -36,6 +85,6 @@
         {% endfor %}
         </tbody>
     </table>
-
+#}
   {#   <a href="{{ path('app_quiz_new') }}">Create new</a>#}
 {% endblock %}

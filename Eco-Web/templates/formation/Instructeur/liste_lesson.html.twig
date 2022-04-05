@@ -3,12 +3,17 @@
 {% block title %}Liste des leçons{% endblock %}
 
 {% block body %}
-    <a href="{{ path('app_formation_show', {'id' : formation}) }}" class="d-flex justify-content-end text-end mt-2">Retour aux sections</a>
+    {% for message in app.flashes('questionnaire') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <a href="{{ path('formation_show_instructeur', {'id' : formation}) }}" class="d-flex justify-content-end text-end mt-2">Retour aux sections</a>
 
     <h1 class="color text-center">{{ sectionEncour }}</h1>
     <div class="d-flex justify-content-around mt-3">
        <a href="{{ path('new_lesson', {'id' : sectionEncour.id }) }}"><btn class="btn btn-primary">Ajouter une leçon</btn></a>
-        <a href="{{ path('app_quiz_new', {'id' : sectionEncour.id }) }}"><btn class="btn btn-primary">Ajouter une question</btn></a>
+        <a href="{{ path('app_quiz_new', {'id' : sectionEncour.id }) }}"><btn class="btn btn-primary">Ajouter un Quiz</btn></a>
 
     </div>
     <div class="row mt-4" >
