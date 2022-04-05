@@ -12,14 +12,11 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class QuizType extends AbstractType
+class QuizApprenantType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('question1', TextType::class, [
-                'label' => 'Question n°1'
-            ])
             ->add('response1', ChoiceType::class, [
                 'label' => 'Réponse : ',
                 'choices' => [
@@ -28,12 +25,6 @@ class QuizType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => false,
-            ])
-            ->add('not_good1', null, [
-                'label' => 'Bonne réponse :'
-            ])
-            ->add('question2', TextType::class, [
-                'label' => 'Question n°2'
             ])
             ->add('response2', ChoiceType::class, [
                 'label' => 'Réponse : ',
@@ -44,25 +35,15 @@ class QuizType extends AbstractType
                 'expanded' => true,
                 'multiple' => false
             ])
-            ->add('not_good2', null, [
-                'label' => 'Bonne réponse :'
-            ])
-            ->add('question3', TextType::class, [
-                'label' => 'Question n°3'
-            ])
             ->add('response3', ChoiceType::class, [
                 'label' => 'Réponse : ',
                 'choices' => [
                     'vrais' => 1,
-                    'faux' =>0,
+                    'faux' => 0,
                 ],
                 'expanded' => true,
                 'multiple' => false
             ])
-            ->add('not_good3', null, [
-                'label' => 'Bonne réponse :'
-            ])
-         #   ->add('section')
         ;
     }
 

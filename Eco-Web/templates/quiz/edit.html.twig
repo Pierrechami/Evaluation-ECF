@@ -6,7 +6,22 @@
 
     <h1>Edit Quiz</h1>
 
-    {{ include('quiz/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ form_start(form) }}
+{{ q1 }}
+    {{ form_widget(form.response1) }}
+    {{ q2 }}
+
+    {{ form_widget(form.response2) }}
+    {{ q3 }}
+
+    {{ form_widget(form.response3) }}
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+
+
+    {#   {{ include('quiz/_form.html.twig', {'button_label': 'Update'}) }}#}
 
   {#   <a href="{{ path('app_quiz_index') }}">back to list</a>#}
 
