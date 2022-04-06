@@ -3,8 +3,8 @@
 {% block title %}New Quiz{% endblock %}
 
 {% block body %}
-    <h1>Create new Quiz</h1>
+    <h1 class="text-center color mt-3">Créer un Quiz pour la section "{{ section.title }}"</h1>
 
     {{ include('quiz/_form.html.twig') }}
- {#    <a href="{{ path('app_quiz_index') }}">back to list</a>#}
+
 {% endblock %}

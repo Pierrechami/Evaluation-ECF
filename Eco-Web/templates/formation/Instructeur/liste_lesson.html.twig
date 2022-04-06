@@ -8,6 +8,11 @@
             {{ message }}
         </div>
     {% endfor %}
+    {% for message in app.flashes('quiz-ok') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <a href="{{ path('formation_show_instructeur', {'id' : formation}) }}" class="d-flex justify-content-end text-end mt-2">Retour aux sections</a>
 
     <h1 class="color text-center">{{ sectionEncour }}</h1>

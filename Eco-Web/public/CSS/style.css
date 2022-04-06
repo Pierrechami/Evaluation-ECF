@@ -215,6 +215,12 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
 }
 
+/* Page de réponse au question*/
+
+.response-quizz{
+    border: dashed rgb(36, 164, 124);
+    padding: 2%;
+}
 
 /*Footer */
 @media screen and (min-width: 770px) and (min-height: 1100px) {
