@@ -30,7 +30,7 @@ class QuizType extends AbstractType
                 'multiple' => false,
             ])
             ->add('not_good1', null, [
-                'label' => 'Bonne réponse :'
+                'label' => 'Information complémentaire si besoin :'
             ])
             ->add('question2', TextType::class, [
                 'label' => 'Question n°2'
@@ -45,7 +45,7 @@ class QuizType extends AbstractType
                 'multiple' => false
             ])
             ->add('not_good2', null, [
-                'label' => 'Bonne réponse :'
+                'label' => 'Information complémentaire si besoin :'
             ])
             ->add('question3', TextType::class, [
                 'label' => 'Question n°3'
@@ -60,7 +60,7 @@ class QuizType extends AbstractType
                 'multiple' => false
             ])
             ->add('not_good3', null, [
-                'label' => 'Bonne réponse :'
+                'label' => 'Information complémentaire si besoin :'
             ])
          #   ->add('section')
         ;

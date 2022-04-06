@@ -4,26 +4,26 @@
 
 {% block body %}
 
-    <h1>Edit Quiz</h1>
+    <h1 class="color text-center mt-3">Bienvenue sur le Quiz correspondant à la section " {{ sectionTitle }} "</h1>
 
     {{ form_start(form) }}
-{{ q1 }}
-    {{ form_widget(form.response1) }}
-    {{ q2 }}
+    <div class="mt-4">
+        <p><strong>1 ) </strong>{{ q1 }}</p>
+        {{ form_widget(form.response1) }}
+    </div>
+    <div class="mt-4">
+        <p><strong>2 ) </strong>{{ q2 }}</p>
 
-    {{ form_widget(form.response2) }}
-    {{ q3 }}
+        {{ form_widget(form.response2) }}
+    </div>
+    <div class="mt-4">
+    <p><strong>3 ) </strong>{{ q3 }}</p>
 
     {{ form_widget(form.response3) }}
+    </div>
 
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <button class="btn btn-secondary float-end">{{ button_label|default('Correction') }}</button>
     {{ form_end(form) }}
 
 
-
-    {#   {{ include('quiz/_form.html.twig', {'button_label': 'Update'}) }}#}
-
-  {#   <a href="{{ path('app_quiz_index') }}">back to list</a>#}
-
-   {#  {{ include('quiz/_delete_form.html.twig') }}#}
 {% endblock %}

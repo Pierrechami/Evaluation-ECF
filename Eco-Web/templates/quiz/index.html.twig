@@ -3,88 +3,127 @@
 {% block title %}Quiz index{% endblock %}
 
 {% block body %}
-    <h1 class="color text-center mt-4">Résultat du quiz</h1>
 
+    <h1 class="color text-center mt-4 mb-3">Résultat du quiz</h1>
+    <p class="text-end"><a href="{{ path('liste_lesson' , { 'id' : section}) }}">Retour à la section</a></p>
+    <section class="response-quizz">
 
-{{ dump(quizInstructeur) }}
-    {{ dump(quizApprenant) }}
+        <div>
+            <div class="row">
+                <div class="col-xs-12 mt-1 mb-1">
+                    <h4 class="text-center text-decoration-underline"> Question 1</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><strong> {{ quizApprenant.question1 }}</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                {% if quizApprenant.response1 == quizInstructeur.response1 %}
+                <div class="col-xs-12">
+                    <p><strong class="color">Bravo !</strong> Vous avez répondu correctement, la bonne réponse est
+                        {% if  quizInstructeur.response1 == true %} <strong> Vrais</strong>
+                        {% else %}<strong>Faux</strong>
+                        {% endif %}
+                    </p>
+                    {% else %}
+                        <p><strong class="color-red">Dommage !</strong> Vous n'avez pas répondu correctement, la bonne
+                            réponse est
+                            {% if  quizInstructeur.response1 == true %} <strong> Vrais </strong>
+                            {% else %} <strong> Faux </strong>
+                            {% endif %}
+                        </p>
+                </div>
+                {% endif %}
+            </div>
+            {% if  quizInstructeur.notgood1 is defined and quizInstructeur.notgood1 is not null %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><strong>Explication :</strong> {{ quizInstructeur.notgood1 }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
 
-    {{ dump(quizApprenant.response1) }}
-
-    <div>
-        <p>{{ quizApprenant.question1 }}</p>
-        <p> {% if quizApprenant.response1 == quizInstructeur.response1 %}
-Bravo ! Vous avez répondu correctement, la réponse été bien = {{ quizInstructeur.response1 }}
+        <div>
+            <div class="row">
+                <div class="col-xs-12 mt-1 mb-1">
+                    <h4 class="text-center text-decoration-underline"> Question 2</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><strong> {{ quizApprenant.question2 }}</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                {% if quizApprenant.response2 == quizInstructeur.response2 %}
+                    <div class="col-xs-12">
+                    <p><strong class="color">Bravo !</strong> Vous avez répondu correctement, la bonne réponse est
+                        {% if  quizInstructeur.response2 == true %} <strong> Vrais</strong>
+                        {% else %}<strong>Faux</strong>
+                        {% endif %}
+                    </p>
                 {% else %}
-                    Dommage ! Vous n'avez pas répondu correctement, la réponse été bien = {{ quizInstructeur.response1 ? 'Vrais' : 'Faux'}}
-
+                    <p><strong class="color-red">Dommage !</strong> Vous n'avez pas répondu correctement, la bonne
+                        réponse est
+                        {% if  quizInstructeur.response2 == true %} <strong> Vrais </strong>
+                        {% else %} <strong> Faux </strong>
+                        {% endif %}
+                    </p>
+                    </div>
+                {% endif %}
+            </div>
+            {% if  quizInstructeur.notgood2 is defined and quizInstructeur.notgood2 is not null %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><strong>Explication :</strong> {{ quizInstructeur.notgood2 }}</p>
+                    </div>
+                </div>
             {% endif %}
-            {% if  quizInstructeur.not_good1 is defined  %}
-        <p> <strong>Explication :</strong> {{ quizInstructeur.not_good1  }}</p>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-xs-12 mt-1 mb-1">
+                    <h4 class="text-center text-decoration-underline"> Question 3</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><strong> {{ quizApprenant.question3 }}</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                {% if quizApprenant.response3 == quizInstructeur.response3 %}
+                    <div class="col-xs-12">
+                    <p><strong class="color">Bravo !</strong> Vous avez répondu correctement, la bonne réponse est
+                        {% if  quizInstructeur.response3 == true %} <strong> Vrais</strong>
+                        {% else %}<strong>Faux</strong>
+                        {% endif %}
+                    </p>
+                {% else %}
+                    <p><strong class="color-red">Dommage !</strong> Vous n'avez pas répondu correctement, la bonne
+                        réponse est
+                        {% if  quizInstructeur.response3 == true %} <strong> Vrais </strong>
+                        {% else %} <strong> Faux </strong>
+                        {% endif %}
+                    </p>
+                    </div>
+                {% endif %}
+            </div>
+            {% if  quizInstructeur.notgood3 is defined and quizInstructeur.notgood3 is not null %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p><strong>Explication :</strong> {{ quizInstructeur.notgood3 }}</p>
+                    </div>
+                </div>
             {% endif %}
-        </p>
-    </div>
+        </div>
 
-    <div>
-        <p>{{ quizApprenant.question2 }}</p>
-        <p> {% if quizApprenant.response2 == quizInstructeur.response2 %}
-                Bravo ! Vous avez répondu correctement, la réponse été bien = {{ quizInstructeur.response2 }}
-            {% else %}
-                Dommage ! Vous n'avez pas répondu correctement, la réponse été bien = {{ quizInstructeur.response2 ? 'Vrais' : 'no'}}
-            {% endif %}
-            {% if  quizInstructeur.not_good1 is defined  %}
-        <p> <strong>Explication :</strong> {{ quizInstructeur.not_good2  }}</p>
-        {% endif %}
-        </p>
-    </div>
 
-    <div>
-        <p>{{ quizApprenant.question3 }}</p>
-        <p> {% if quizApprenant.response2 == quizInstructeur.response3 %}
-                Bravo ! Vous avez répondu correctement, la réponse été bien = {{ quizInstructeur.response3 }}
-            {% else %}
-                Dommage ! Vous n'avez pas répondu correctement, la réponse été bien = {{ quizInstructeur.response3 ? 'Vrais' : 'Faux'}}
+    </section>
 
-            {% endif %}
-            {% if  quizInstructeur.not_good1 is defined  %}
-        <p> <strong>Explication :</strong> {{ quizInstructeur.not_good3  }}</p>
-        {% endif %}
-        </p>
-    </div>
 
-    {#
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Good</th>
-                <th>No_good</th>
-                <th>Good_reponse</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for quiz in quizzes %}
-            <tr>
-                <td>{{ quiz.id }}</td>
-                <td>{{ quiz.title }}</td>
-                <td>{{ quiz.good ? 'Yes' : 'No' }}</td>
-                <td>{{ quiz.noGood ? 'Yes' : 'No' }}</td>
-                <td>{{ quiz.goodReponse }}</td>
-                <td>
-                    <a href="{{ path('app_quiz_show', {'id': quiz.id}) }}">show</a>
-                    <a href="{{ path('app_quiz_edit', {'id': quiz.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-#}
-  {#   <a href="{{ path('app_quiz_new') }}">Create new</a>#}
 {% endblock %}

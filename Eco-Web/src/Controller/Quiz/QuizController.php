@@ -19,12 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuizController extends AbstractController
 {
+    # résultat du quiz
+
     /**
      * @Route("/show/{id}/response/apprenant/{app}", name="app_quiz_index", methods={"GET", "POST"})
      */
     public function index(QuizRepository $quizRepository, $id, $app): Response
     {
-        if ($this->getUser() == null) {
+        if ($this->getUser() == null || intval($app) !== $this->getUser()->getId() ) {
             return $this->redirectToRoute('app');
         }
 
@@ -33,10 +35,13 @@ class QuizController extends AbstractController
 
         $quizApprenant = $quizRepository->findOneBy(['section' => ['id' => $id], 'user' => ['id' => $app]]);
 
+        $section = $quizInstructeur->getSection()->getId();
+
 
         return $this->render('quiz/index.html.twig', [
             'quizInstructeur' => $quizInstructeur,
-            'quizApprenant' => $quizApprenant
+            'quizApprenant' => $quizApprenant,
+            'section' => $section
         ]);
     }
 
@@ -65,7 +70,6 @@ class QuizController extends AbstractController
             return $this->redirectToRoute('liste_lesson_instructeur', ['id' => $section->getId()]);
         }
 
-
         $quiz = new Quiz();
         $form = $this->createForm(QuizType::class, $quiz);
         $form->handleRequest($request);
@@ -75,13 +79,14 @@ class QuizController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($quiz);
             $entityManager->flush();
-
-            return $this->redirectToRoute('app', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('quiz-ok', 'Félicitations, vous venez de créer un Quiz pour la section.');
+            return $this->redirectToRoute('liste_lesson_instructeur', [ 'id' => $section->getId() ], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('quiz/new.html.twig', [
             'quiz' => $quiz,
             'form' => $form,
+            'section' => $section
         ]);
     }
 
@@ -92,6 +97,7 @@ class QuizController extends AbstractController
     {
         return $this->render('quiz/show.html.twig', [
             'quiz' => $quiz,
+
         ]);
     }
 
@@ -101,7 +107,7 @@ class QuizController extends AbstractController
     /**
      * @Route("/{id}/response/apprenant", name="app_quiz_edit", methods={"GET", "POST"})
      */
-    public function ResponseApprenant(Request $request, EntityManagerInterface $entityManager, $id, QuizRepository $quizRepository): Response
+    public function ResponseApprenant(Request $request, EntityManagerInterface $entityManager, $id, QuizRepository $quizRepository, SectionRepository $sectionRepository): Response
     {
         if ($quizRepository->findBy(['section' => ['id' => $id]]) == []) {
             $this->addFlash('questionnaire-null', 'Il n\'y a pas de quiz pour le moment, mais revient vite, l\'instructeur est sûrement en train de l\'écrire.');
@@ -114,6 +120,11 @@ class QuizController extends AbstractController
 
 
         $quiz = $quizRepository->findOneBy(['section' => ['id' => $id]]);
+
+        $sectionid = $quiz->getSection()->getId();
+
+        $sectionTitle = $sectionRepository->findOneBy(['id' => $sectionid])->getTitle();
+
 
         $question1 = $quiz->getQuestion1();
         $question2 = $quiz->getQuestion2();
@@ -142,36 +153,12 @@ class QuizController extends AbstractController
             'form' => $form,
             'q1' => $question1,
             'q2' => $question2,
-            'q3' => $question3
+            'q3' => $question3,
+            'sectionTitle' => $sectionTitle,
         ]);
     }
 
 
-
-
-
-    /*
-     *
-     *  * @Route("/{id}/edit", name="app_quiz_edit", methods={"GET", "POST"})
-        public function edit(Request $request, Quiz $quiz, EntityManagerInterface $entityManager): Response
-    {
-
-        $form = $this->createForm(QuizType::class, $quiz);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('quiz/edit.html.twig', [
-            'quiz' => $quiz,
-            'form' => $form,
-        ]);
-    }
-
-     */
 
     /**
      * @Route("/{id}", name="app_quiz_delete", methods={"POST"})
