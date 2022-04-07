@@ -3,6 +3,32 @@
 {% block title %}Formations{% endblock %}
 
 {% block body %}
+
+
+{#
+    <div class="row">
+        <div class="col-md d-flex flex-row flex-wrap justify-content-around">
+            {% for formationEnCours in formationsEnCours %}
+                <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
+                    <img src="{{ asset('Formation/' ~  formationEnCours.picture ) }}"
+                         class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation"
+                         style="width:260px;height:260px">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ formationEnCours.title }}</h4>
+                        <p class="card-text description"> {{ formationEnCours.teaserText }}</p>
+                        <div class="mb-1 text-muted">Ecrit par
+                            : {{ formationEnCours.user.firstname }} {{ formationEnCours.user.name }}</div>
+                    </div>
+                    <div class="btn-access-formation">
+                        <a href="{{ path('app_formation_show' , {'id' :  formationEnCours.id} ) }}" class="btn btn-primary">Détails</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+#}
+
+
     <div class="row mt-2 mb-3 ">
         <div class=" d-flex justify-content-end">
             <img src="{{ asset('Images/search-icon.png') }}" width="40px" height="40px">

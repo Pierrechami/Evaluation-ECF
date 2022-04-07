@@ -84,11 +84,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $quizzes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="user")
+     */
+    private $progress;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->quizzes = new ArrayCollection();
+        $this->progress = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -344,6 +350,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($quiz->getUser() === $this) {
                 $quiz->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Progress>
+     */
+    public function getProgress(): Collection
+    {
+        return $this->progress;
+    }
+
+    public function addProgress(Progress $progress): self
+    {
+        if (!$this->progress->contains($progress)) {
+            $this->progress[] = $progress;
+            $progress->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgress(Progress $progress): self
+    {
+        if ($this->progress->removeElement($progress)) {
+            // set the owning side to null (unless already changed)
+            if ($progress->getUser() === $this) {
+                $progress->setUser(null);
             }
         }
 

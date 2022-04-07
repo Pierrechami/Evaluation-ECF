@@ -45,9 +45,15 @@ class Formation
      */
     private $sections;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="formation")
+     */
+    private $progress;
+
     public function __construct()
     {
         $this->sections = new ArrayCollection();
+        $this->progress = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -139,5 +145,35 @@ class Formation
         return (string) $this->title;
         // to show the id of the Category in the select
         // return $this->id;
+    }
+
+    /**
+     * @return Collection<int, Progress>
+     */
+    public function getProgress(): Collection
+    {
+        return $this->progress;
+    }
+
+    public function addProgress(Progress $progress): self
+    {
+        if (!$this->progress->contains($progress)) {
+            $this->progress[] = $progress;
+            $progress->setFormation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgress(Progress $progress): self
+    {
+        if ($this->progress->removeElement($progress)) {
+            // set the owning side to null (unless already changed)
+            if ($progress->getFormation() === $this) {
+                $progress->setFormation(null);
+            }
+        }
+
+        return $this;
     }
 }

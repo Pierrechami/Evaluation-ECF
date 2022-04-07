@@ -4,12 +4,15 @@ namespace App\Controller\Lesson;
 
 use App\Entity\Comment;
 use App\Entity\Lesson;
+use App\Entity\Progress;
 use App\Entity\Section;
 use App\Form\CommentType;
 use App\Form\LessonType;
+use App\Form\ProgressType;
 use App\Repository\CommentRepository;
 use App\Repository\FormationRepository;
 use App\Repository\LessonRepository;
+use App\Repository\ProgressRepository;
 use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -134,7 +137,7 @@ class LessonController extends AbstractController
 
         $idFormation = $sectionEncour->getFormation()->getId();
 
-        if($formationRepository->findBy(['id' => $idFormation])[0]->getUser()->getId() !== $this->getUser()->getId()){
+        if ($formationRepository->findBy(['id' => $idFormation])[0]->getUser()->getId() !== $this->getUser()->getId()) {
             return $this->redirectToRoute('app');
         }
 
@@ -158,7 +161,7 @@ class LessonController extends AbstractController
     /**
      * @Route("/{id}", name="app_lesson_show",  methods={"GET", "POST"})
      */
-    public function show(Lesson $lesson, Request $request, CommentRepository $commentRepository, $id): Response
+    public function show(Lesson $lesson, Request $request, CommentRepository $commentRepository, $id, ProgressRepository $progressRepository, SectionRepository $sectionRepository, FormationRepository $formationRepository): Response
     {
         if ($this->getUser() == null) {
             return $this->redirectToRoute('app');
@@ -167,7 +170,6 @@ class LessonController extends AbstractController
         $section = $lesson->getSection()->getId();
 
         $user = $this->getUser()->getRoles()[0];
-
 
 
         $comment = new Comment();
@@ -180,10 +182,44 @@ class LessonController extends AbstractController
             $commentRepository->add($comment);
             $this->addFlash('commentaire', 'Votre commentaire a bien été pris en compte !');
 
-            return $this->redirectToRoute('app_lesson_show', ['id' => $id ], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_lesson_show', ['id' => $id], Response::HTTP_SEE_OTHER);
         }
 
-        $commentaires = $commentRepository->findBy(['lesson' => ['id' => $id]] , ['id' => 'DESC']);
+        $commentaires = $commentRepository->findBy(['lesson' => ['id' => $id]], ['id' => 'DESC']);
+
+        # Mettre une lesson terminé
+
+        $formationId = $sectionRepository->findOneBy(['id' => $section])->getFormation()->getId();
+        $formation = $formationRepository->findOneBy(['id' => $formationId]);
+
+
+
+        $progress = new Progress();
+        $formProgress = $this->createForm(ProgressType::class, $progress);
+        $formProgress->handleRequest($request);
+        $progress->setUser($this->getUser());
+        $progress->setLesson($lesson);
+        $progress->setFormation($formation);
+        $progress->setLessonFinished(true);
+        $progress->setFormationProgress($formation->getId());
+
+
+
+        # Ajout de la propriété set formation si l'user n'a jamais valider de cours relié a cette formation
+       if($progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()], 'formation' => ['id' => $formation->getId()] ]) == null){
+           $progress->setFormationProgress(null);
+       }
+
+            if ($formProgress->isSubmitted() && $formProgress->isValid()) {
+                # si l'utilisateur a déjà terminer la leçon alors on ne rajoute pas de nouvelle ligne en bdd
+            if($progressRepository->findOneBy(['user' => ['id' => $this->getUser()->getId()]]) !== null){
+                if ($progressRepository->findBy(['lesson' => ['id' => $lesson->getId()], 'user' => ['id' => $this->getUser()->getId()]]) !== []){
+                           return $this->redirectToRoute('liste_lesson', ['id' => $section], Response::HTTP_SEE_OTHER);
+                }
+            }
+            $progressRepository->add($progress);
+            return $this->redirectToRoute('liste_lesson', ['id' => $section], Response::HTTP_SEE_OTHER);
+        }
 
 
         return $this->render('lesson/show.html.twig', [
@@ -192,7 +228,8 @@ class LessonController extends AbstractController
             'user' => $user,
             'comment' => $comment,
             'form' => $form->createView(),
-            'commentaires' => $commentaires
+            'commentaires' => $commentaires,
+            'formProgress' => $formProgress->createView()
 
         ]);
     }
@@ -202,7 +239,7 @@ class LessonController extends AbstractController
      */
     public function edit(Request $request, Lesson $lesson, LessonRepository $lessonRepository, FormationRepository $formationRepository): Response
     {
-        if ($this->getUser() == null){
+        if ($this->getUser() == null) {
             return $this->redirectToRoute('app');
 
         }
