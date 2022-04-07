@@ -60,9 +60,15 @@ class Lesson
      */
     private $comments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="lesson")
+     */
+    private $progress;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->progress = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -178,6 +184,36 @@ class Lesson
             // set the owning side to null (unless already changed)
             if ($comment->getLesson() === $this) {
                 $comment->setLesson(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Progress>
+     */
+    public function getProgress(): Collection
+    {
+        return $this->progress;
+    }
+
+    public function addProgress(Progress $progress): self
+    {
+        if (!$this->progress->contains($progress)) {
+            $this->progress[] = $progress;
+            $progress->setLesson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgress(Progress $progress): self
+    {
+        if ($this->progress->removeElement($progress)) {
+            // set the owning side to null (unless already changed)
+            if ($progress->getLesson() === $this) {
+                $progress->setLesson(null);
             }
         }
 

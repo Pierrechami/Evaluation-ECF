@@ -5,6 +5,7 @@ namespace App\Controller\Formation;
 use App\Entity\Formation;
 use App\Form\FormationType;
 use App\Repository\FormationRepository;
+use App\Repository\ProgressRepository;
 use App\Repository\SectionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -23,10 +24,18 @@ class FormationController extends AbstractController
     /**
      * @Route("/", name="app_formation_index", methods={"GET"})
      */
-    public function index(FormationRepository $formationRepository): Response
+    public function index(FormationRepository $formationRepository, ProgressRepository $progressRepository): Response
     {
+
+
+
+       $formationEnCours = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()] , 'formation_progress' => null]);
+        $nbrFormationEnCours = count($formationEnCours);
+
+
         return $this->render('formation/index.html.twig', [
             'formations' => $formationRepository->findAll(),
+
         ]);
     }
 
