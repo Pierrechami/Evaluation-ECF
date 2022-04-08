@@ -3,6 +3,7 @@
 namespace App\Controller\Formation;
 
 use App\Entity\Formation;
+use App\Entity\Progress;
 use App\Form\FormationType;
 use App\Repository\FormationRepository;
 use App\Repository\ProgressRepository;
@@ -26,12 +27,17 @@ class FormationController extends AbstractController
      */
     public function index(FormationRepository $formationRepository, ProgressRepository $progressRepository): Response
     {
-
-
+        if ($this->getUser() !== null){
 
        $formationEnCours = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()] , 'formation_progress' => null]);
-        $nbrFormationEnCours = count($formationEnCours);
 
+            return $this->render('formation/index.html.twig', [
+                'formations' => $formationRepository->findAll(),
+                'formationEnCours' => $formationEnCours
+
+            ]);
+
+        }
 
         return $this->render('formation/index.html.twig', [
             'formations' => $formationRepository->findAll(),

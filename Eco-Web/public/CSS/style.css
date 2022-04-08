@@ -150,6 +150,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-right: 10px;
 }
 
+#formationsEnCours {
+    display: none;
+}
+
+#btn-formations {
+    background-color: #6c757d;
+    color: white;
+}
+
 
 /*  Page de login*/
 .page-log {

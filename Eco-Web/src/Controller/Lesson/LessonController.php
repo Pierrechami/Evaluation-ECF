@@ -187,12 +187,8 @@ class LessonController extends AbstractController
 
         $commentaires = $commentRepository->findBy(['lesson' => ['id' => $id]], ['id' => 'DESC']);
 
-        # Mettre une lesson terminé
 
-        $formationId = $sectionRepository->findOneBy(['id' => $section])->getFormation()->getId();
-        $formation = $formationRepository->findOneBy(['id' => $formationId]);
-
-
+        $formation = $sectionRepository->findOneBy(['id' => $section])->getFormation();
 
         $progress = new Progress();
         $formProgress = $this->createForm(ProgressType::class, $progress);
@@ -204,17 +200,34 @@ class LessonController extends AbstractController
         $progress->setFormationProgress($formation->getId());
 
 
+        # Ajout de la propriété set formationProgress si l'user n'a jamais valider de cours relié a cette formation
+        if ($progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()], 'formation' => ['id' => $formation->getId()]]) == null) {
+            $progress->setFormationProgress(null);
+        }
 
-        # Ajout de la propriété set formation si l'user n'a jamais valider de cours relié a cette formation
-       if($progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()], 'formation' => ['id' => $formation->getId()] ]) == null){
-           $progress->setFormationProgress(null);
-       }
+        #  1 ) Ajouter une formation terminer et/ pour supprimer les formation en cours
+            # cherche la formation
+            $idformation = $formation->getId();
+            # récupéré les sections
+        $sectionFormation = $sectionRepository->findBy(['formation' => ['id' => $idformation]]);
+        $nombreSection = count($sectionFormation);
 
-            if ($formProgress->isSubmitted() && $formProgress->isValid()) {
-                # si l'utilisateur a déjà terminer la leçon alors on ne rajoute pas de nouvelle ligne en bdd
-            if($progressRepository->findOneBy(['user' => ['id' => $this->getUser()->getId()]]) !== null){
-                if ($progressRepository->findBy(['lesson' => ['id' => $lesson->getId()], 'user' => ['id' => $this->getUser()->getId()]]) !== []){
-                           return $this->redirectToRoute('liste_lesson', ['id' => $section], Response::HTTP_SEE_OTHER);
+        for($i =0; $i < $nombreSection; $i++){
+             $a = count($sectionFormation[$i]->getLessons()->getValues());
+        }
+        dd($a);
+
+            # pour chaque section compté le nombre de lesson
+            # si le nombre de leçons et = au nombre de fois qu'apparait l'user en cours avec l'id de la formation alors supprimer le tableau (ou juste la ligne "formation progress oû c NULL
+
+
+
+            # fin de 1 )
+        if ($formProgress->isSubmitted() && $formProgress->isValid()) {
+            # si l'utilisateur a déjà terminer la leçon alors on ne rajoute pas de nouvelle ligne en bdd
+            if ($progressRepository->findOneBy(['user' => ['id' => $this->getUser()->getId()]]) !== null) {
+                if ($progressRepository->findBy(['lesson' => ['id' => $lesson->getId()], 'user' => ['id' => $this->getUser()->getId()]]) !== []) {
+                    return $this->redirectToRoute('liste_lesson', ['id' => $section], Response::HTTP_SEE_OTHER);
                 }
             }
             $progressRepository->add($progress);
@@ -229,8 +242,7 @@ class LessonController extends AbstractController
             'comment' => $comment,
             'form' => $form->createView(),
             'commentaires' => $commentaires,
-            'formProgress' => $formProgress->createView()
-
+            'formProgress' => $formProgress->createView(),
         ]);
     }
 

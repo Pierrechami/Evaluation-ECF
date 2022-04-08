@@ -33,6 +33,7 @@ class SectionController extends AbstractController
         }
 
 
+
         $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
         $formationsectionId = $sectionEncour->getFormation()->getId();
         $lessons = $lessonRepository->findBy(['section' => ['id' => $sectionEncour->getId()]]);
