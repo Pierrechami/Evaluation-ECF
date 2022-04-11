@@ -12,20 +12,20 @@
     </div>
 
     {% if is_granted('ROLE_APPRENANT') %}
-    <div class="row mt-2 mb-3 ">
-        <div class="row ">
-            <div class="col-4 d-flex justify-content-center ">
-               <btn class="btn btn-outline-secondary" id="btn-formations">Formations</btn>
-            </div>
-            <div class="col-4 d-flex justify-content-center ">
-                <btn class="btn btn-outline-secondary" id="btn-formations-en-cours">Formations en cours</btn>
-            </div>
-            <div class="col-4 d-flex justify-content-center">
-                <btn class="btn btn-outline-secondary" id="btn-formations-terminées">Formations terminées</btn>
+        <div class="row mt-2 mb-3 ">
+            <div class="row ">
+                <div class="col-4 d-flex justify-content-center ">
+                    <btn class="btn btn-outline-secondary" id="btn-formations">Formations</btn>
+                </div>
+                <div class="col-4 d-flex justify-content-center ">
+                    <btn class="btn btn-outline-secondary" id="btn-formations-en-cours">Formations en cours</btn>
+                </div>
+                <div class="col-4 d-flex justify-content-center">
+                    <btn class="btn btn-outline-secondary" id="btn-formations-terminees">Formations terminées</btn>
 
+                </div>
             </div>
         </div>
-    </div>
     {% endif %}
 
     <h1 class="text-center mt-3 mb-3 color">Liste des formations</h1>
@@ -52,26 +52,49 @@
     </div>
 
     {% if app.user is not null %}
-    <div class="row" id="formationsEnCours">
-        <div class="col-md d-flex flex-row flex-wrap justify-content-around">
-            {% for formationEnCour in formationEnCours %}
-                <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
-                    <img src="{{ asset('Formation/' ~  formationEnCour.formation.picture ) }}"
-                         class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation"
-                         style="width:260px;height:260px">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ formationEnCour.formation.title }}</h4>
-                        <p class="card-text description"> {{ formationEnCour.formation.teaserText }}</p>
-                        <div class="mb-1 text-muted">Ecrit par
-                            : {{ formationEnCour.formation.user.firstname }} {{ formationEnCour.formation.user.name }}</div>
+        <div class="row" id="formationsEnCours">
+            <div class="col-md d-flex flex-row flex-wrap justify-content-around">
+                {% for formationEnCour in formationEnCours %}
+                    <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
+                        <img src="{{ asset('Formation/' ~  formationEnCour.formation.picture ) }}"
+                             class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation"
+                             style="width:260px;height:260px">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ formationEnCour.formation.title }}</h4>
+                            <p class="card-text description"> {{ formationEnCour.formation.teaserText }}</p>
+                            <div class="mb-1 text-muted">Ecrit par
+                                : {{ formationEnCour.formation.user.firstname }} {{ formationEnCour.formation.user.name }}</div>
+                        </div>
+                        <div class="btn-access-formation">
+                            <a href="{{ path('app_formation_show' , {'id' :  formationEnCour.formation.id} ) }}"
+                               class="btn btn-primary">Détails</a>
+                        </div>
                     </div>
-                    <div class="btn-access-formation">
-                        <a href="{{ path('app_formation_show' , {'id' :  formationEnCour.formation.id} ) }}" class="btn btn-primary">Détails</a>
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-    </div>
+
+        <div class="row" id="formationsStatusTerminees">
+            <div class="col-md d-flex flex-row flex-wrap justify-content-around">
+                {% for formationTerminee in formationTerminees %}
+                    <div class="card  m-2 border-formations " style="overflow:hidden;width: 288px; min-width: 288px">
+                        <img src="{{ asset('Formation/' ~  formationTerminee.formation.picture ) }}"
+                             class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation"
+                             style="width:260px;height:260px">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ formationTerminee.formation.title }}</h4>
+                            <p class="card-text description"> {{ formationTerminee.formation.teaserText }}</p>
+                            <div class="mb-1 text-muted">Ecrit par
+                                : {{ formationTerminee.formation.user.firstname }} {{ formationTerminee.formation.user.name }}</div>
+                        </div>
+                        <div class="btn-access-formation">
+                            <a href="{{ path('app_formation_show' , {'id' :  formationTerminee.formation.id} ) }}"
+                               class="btn btn-primary">Détails</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
 
 
     {% endif %}
@@ -79,5 +102,5 @@
 
 {% endblock %}
 {% block footer %}
-        {% include 'footer.html.twig' %}
+    {% include 'footer.html.twig' %}
 {% endblock %}

@@ -3,6 +3,11 @@
 {% block title %}Leçon {{ lesson.title }} {% endblock %}
 
 {% block body %}
+    {% if lessonFinish != null %}
+        <div class="alert alert-success text-center">
+            Vous avez déjà terminé la leçon.
+        </div>
+    {% endif %}
     {% for message in app.flashes('commentaire') %}
         <div class="alert alert-success">
             {{ message }}
@@ -29,7 +34,7 @@
         </div>
         <div class="row mt-5 home-page-border">
             <div class="col-xs-12">
-                {{ lesson.content }}
+               <p class="">{{ lesson.content }}</p>
             </div>
         </div>
         {% if  lesson.picture1   is not null %}
@@ -62,7 +67,7 @@
 
     <h2 class="text-center">Espace commentaire</h2>
 
-    <div class="mt-3">
+    <div class="mt-3 mb-4">
         <div class="row">
             <div class="col-xs-12">
                 {{ form_start(form) }}

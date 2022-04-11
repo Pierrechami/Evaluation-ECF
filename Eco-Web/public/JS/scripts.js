@@ -4,11 +4,11 @@ $(document).ready(function () {
 
     let btnFormations = document.getElementById('btn-formations');
     let btnFormationsEnCours = document.getElementById('btn-formations-en-cours');
-    let btnFormationsTerminée = document.getElementById('btn-formations-terminées');
+    let btnformationTerminees = document.getElementById('btn-formations-terminees');
 
     let formations = document.getElementById('formations');
     let formationsEnCours = document.getElementById('formationsEnCours')
- //   let formationsTerminée = document.getElementById('formationsTerminée')
+    let formationTerminees = document.getElementById('formationsStatusTerminees')
 
     $("#search").on("keyup", function () {
         var value = $(this).val().toLowerCase();
@@ -17,36 +17,54 @@ $(document).ready(function () {
         });
     });
 
+
+
     btnFormations.addEventListener('click' , () => {
         formations.style.display = "block";
         btnFormations.style.backgroundColor = colorGray;
         btnFormations.style.color = "white";
 
         formationsEnCours.style.display = "none";
-        btnFormationsEnCours.style.backgroundColor = "white"
-        btnFormationsEnCours.style.color = colorGray
+        btnFormationsEnCours.style.backgroundColor = "white";
+        btnFormationsEnCours.style.color = colorGray;
 
-        //  formationsTerminée.style.display = "none";
-        //  btnFormationsTerminée.style.backgroundColor = "white"
-        //  btnFormationsTerminée.style.color = colorGray
+          formationTerminees.style.display = "none";
+        btnformationTerminees.style.backgroundColor = "white";
+        btnformationTerminees.style.color = colorGray;
     })
 
 
 
     btnFormationsEnCours.addEventListener('click' , () => {
         formationsEnCours.style.display = "block";
-        btnFormationsEnCours.style.backgroundColor = colorGray
-        btnFormationsEnCours.style.color = "white"
+        btnFormationsEnCours.style.backgroundColor = colorGray;
+        btnFormationsEnCours.style.color = "white";
 
         formations.style.display = "none";
-        btnFormations.style.backgroundColor = "white"
-        btnFormations.style.color = colorGray
+        btnFormations.style.backgroundColor = "white";
+        btnFormations.style.color = colorGray;
 
 
-        //   formationsTerminée.style.display = "none";
-        //  btnFormationsTerminée.style.backgroundColor = "white"
-        //  btnFormationsTerminée.style.color = colorGray
+        formationTerminees.style.display = "none";
+        btnformationTerminees.style.backgroundColor = "white";
+        btnformationTerminees.style.color = colorGray;
    })
+
+    btnformationTerminees.addEventListener('click', () => {
+        formationTerminees.style.display = "block";
+       btnformationTerminees.style.backgroundColor = colorGray;
+       btnformationTerminees.style.color = "white";
+
+      formations.style.display = "none";
+      btnFormations.style.backgroundColor = "white";
+      btnFormations.style.color = colorGray;
+
+      formationsEnCours.style.display = "none";
+      btnFormationsEnCours.style.backgroundColor = "white";
+      btnFormationsEnCours.style.color = colorGray;
+
+
+    })
 
 
 
