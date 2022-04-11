@@ -5,6 +5,7 @@ namespace App\Controller\Formation;
 use App\Entity\Formation;
 use App\Entity\Progress;
 use App\Form\FormationType;
+use App\Form\ProgressType;
 use App\Repository\FormationRepository;
 use App\Repository\ProgressRepository;
 use App\Repository\SectionRepository;
@@ -29,12 +30,13 @@ class FormationController extends AbstractController
     {
         if ($this->getUser() !== null){
 
-       $formationEnCours = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()] , 'formation_progress' => null]);
+       $formationEnCours = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()] , 'formation_progress' => null , 'formation_finished' => null]);
+       $formationTerminee = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()], 'formation_finished' => true]);
 
             return $this->render('formation/index.html.twig', [
                 'formations' => $formationRepository->findAll(),
-                'formationEnCours' => $formationEnCours
-
+                'formationEnCours' => $formationEnCours,
+                'formationTerminees' => $formationTerminee
             ]);
 
         }
@@ -114,9 +116,9 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_formation_show", methods={"GET"})
+     * @Route("/{id}", name="app_formation_show", methods={"GET", "POST"})
      */
-    public function show(Formation $formation , SectionRepository $sectionRepository , $id): Response
+    public function show(Formation $formation , SectionRepository $sectionRepository , $id, ProgressRepository $progressRepository): Response
     {
         $sectionFormation = $sectionRepository->findBy(['formation' => ['id'=> $id]]);
 
@@ -124,9 +126,38 @@ class FormationController extends AbstractController
             $this->addFlash('obligation-apprenant', 'Vous devez vous créer un compte pour pouvoir accéder aux formations.');
             return $this->redirectToRoute('register_apprenant');
         }
+
+        # Récupérer l'id de la formation
+        $idformation = $formation->getId();
+        #  Récupère toutes les section de la formation
+        $sectionFormation = $sectionRepository->findBy(['formation' => ['id' => $idformation]]);
+        $lessons = [];
+        # Pour chaque section, récupère les leçon
+        foreach ($sectionFormation as $sections) {
+            $lessons [] = $sections->getLessons()->getValues();
+        }
+
+        # Pour chaque section, récupère le nombre de leçons
+        $nombrelesson = 0;
+        foreach ($lessons as $value) {
+            $nombrelesson += count($value);
+        }
+
+        # Récupère toute les ligne du tableau de l'user avec la formation
+        $Userlessons = $progressRepository->findBy(['user' => $this->getUser(), 'formation' => ['id' => $idformation], 'formation_finished' => null]);
+
+        if ($nombrelesson == 0){
+            $pourcentageFormation = 0;
+        }else{
+            $pourcentageFormation = 100 * count($Userlessons) / $nombrelesson ;
+            $pourcentageFormation = round($pourcentageFormation);
+        }
+
+
         return $this->render('formation/show.html.twig', [
             'formation' => $formation,
-            'sectionsFormation' => $sectionFormation
+            'sectionsFormation' => $sectionFormation,
+            'pourcentageFormation' => $pourcentageFormation
         ]);
     }
 

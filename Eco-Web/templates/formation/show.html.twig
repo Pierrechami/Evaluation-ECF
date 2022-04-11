@@ -14,6 +14,12 @@
             <img src="{{ asset('Formation/' ~  formation.picture ) }}" class="card-img-top mx-auto shadow rounded mt-2  " alt="cover formation" style="width:200px;height:260px">
         </div>
     </div>
+    {% if app.user.roles == ['ROLE_APPRENANT'] %}
+        <div class="progress mt-4" style="height: 30px">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ pourcentageFormation }}%;" aria-valuenow="{{ pourcentageFormation }}" aria-valuemin="0" aria-valuemax="100">{{ pourcentageFormation }}%</div>
+        </div>
+
+    {% endif %}
 
 
     <div class="row mt-4" >

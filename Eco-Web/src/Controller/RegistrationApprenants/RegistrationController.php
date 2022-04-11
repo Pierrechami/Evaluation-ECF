@@ -23,14 +23,15 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
 
-        if($user->getEmail('chaminadepierre.24@gmail.com')){
-            $user->setRoles(['ROLE_ADMIN']);
-            $user->setPseudo('admin');
-        }
+
+
         $user->setIsAccepted(true);
         $user->setRoles(['ROLE_APPRENANT']);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if($user->getEmail('chaminadepierre.24@gmail.com')){
+                $user->setRoles(['ROLE_ADMIN']);
+            }
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(

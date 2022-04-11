@@ -147,6 +147,74 @@ class LessonController extends AbstractController
         $lesson->setSection($sectionEncour);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $picture1 */
+            $picture1 = $form->get('picture1')->getData();
+
+            if ($picture1) {
+                $newFilename = uniqid() . '.' . $picture1->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $picture1->move(
+                        $this->getParameter('kernel.project_dir') . '/public/Lesson',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
+                }
+
+
+                $lesson->setPicture1($newFilename);
+            } else {
+                $lesson->setPicture1(null);
+            }
+
+            /** @var UploadedFile $picture2 */
+            $picture2 = $form->get('picture2')->getData();
+
+            if ($picture2) {
+                $newFilename2 = uniqid() . '.' . $picture2->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $picture2->move(
+                        $this->getParameter('kernel.project_dir') . '/public/Lesson',
+                        $newFilename2
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
+                }
+
+
+                $lesson->setPicture2($newFilename2);
+            } else {
+                $lesson->setPicture2(null);
+            }
+
+            /** @var UploadedFile $picture3 */
+            $picture3 = $form->get('picture3')->getData();
+
+            if ($picture3) {
+                $newFilename3 = uniqid() . '.' . $picture3->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $picture3->move(
+                        $this->getParameter('kernel.project_dir') . '/public/Lesson',
+                        $newFilename3
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
+                }
+
+
+                $lesson->setPicture3($newFilename3);
+            } else {
+                $lesson->setPicture3(null);
+            }
+
+
             $lessonRepository->add($lesson);
             return $this->redirectToRoute('liste_lesson_instructeur', ['id' => $sectionEncour->getId()], Response::HTTP_SEE_OTHER);
         }
@@ -205,24 +273,29 @@ class LessonController extends AbstractController
             $progress->setFormationProgress(null);
         }
 
-        #  1 ) Ajouter une formation terminer et/ pour supprimer les formation en cours
-            # cherche la formation
-            $idformation = $formation->getId();
-            # récupéré les sections
+                # Mettre en place la validation d'une formation
+
+        # Récupérer l'id de la formation
+        $idformation = $formation->getId();
+        #  Récupère toutes les section de la formation
         $sectionFormation = $sectionRepository->findBy(['formation' => ['id' => $idformation]]);
-        $nombreSection = count($sectionFormation);
-
-        for($i =0; $i < $nombreSection; $i++){
-             $a = count($sectionFormation[$i]->getLessons()->getValues());
+        $lessons = [];
+        # Pour chaque section, récupère les leçon
+        foreach ($sectionFormation as $sections) {
+            $lessons [] = $sections->getLessons()->getValues();
         }
-        dd($a);
 
-            # pour chaque section compté le nombre de lesson
-            # si le nombre de leçons et = au nombre de fois qu'apparait l'user en cours avec l'id de la formation alors supprimer le tableau (ou juste la ligne "formation progress oû c NULL
+        # Pour chaque section, récupère le nombre de leçons
+        $nombrelesson = 0;
+        foreach ($lessons as $value) {
+            $nombrelesson += count($value);
+        }
+
+        # Récupère toute les ligne du tableau de l'user avec la formation
+        $Userlessons = $progressRepository->findBy(['user' => $this->getUser(), 'formation' => ['id' => $idformation]]);
 
 
 
-            # fin de 1 )
         if ($formProgress->isSubmitted() && $formProgress->isValid()) {
             # si l'utilisateur a déjà terminer la leçon alors on ne rajoute pas de nouvelle ligne en bdd
             if ($progressRepository->findOneBy(['user' => ['id' => $this->getUser()->getId()]]) !== null) {
@@ -231,8 +304,33 @@ class LessonController extends AbstractController
                 }
             }
             $progressRepository->add($progress);
+
+            if (count($Userlessons) + 1 == $nombrelesson ){
+
+                //  Modifier la ligne de la première leçon correspondante a la formation, afin de faciliter le filtrage des formations en cours / fini
+                $formationFinished = new Progress();
+                $formProgress = $this->createForm(ProgressType::class, $formationFinished);
+                $formProgress->handleRequest($request);
+                $formationFinished->setUser($this->getUser());
+                $formationFinished->setFormation($formation);
+                $formationFinished->setFormationFinished(true);
+                $progressRepository->add($formationFinished);
+
+                $firstLesson = $progressRepository->findOneBy(['user' => ['id' => $this->getUser()->getId()],'formation' => ['id' => $idformation], 'formation_progress' => null]);
+                $firstLesson->setFormationProgress($formation->getId());
+                $progressRepository->add($firstLesson);
+
+                  }
+
+
+
+
             return $this->redirectToRoute('liste_lesson', ['id' => $section], Response::HTTP_SEE_OTHER);
+
+
         }
+
+        $lessonFinish = $progressRepository->findOneBy(['user' => $this->getUser(), 'lesson' => $lesson->getId()]);
 
 
         return $this->render('lesson/show.html.twig', [
@@ -243,6 +341,7 @@ class LessonController extends AbstractController
             'form' => $form->createView(),
             'commentaires' => $commentaires,
             'formProgress' => $formProgress->createView(),
+            'lessonFinish' => $lessonFinish
         ]);
     }
 
