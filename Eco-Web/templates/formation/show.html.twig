@@ -15,11 +15,17 @@
         </div>
     </div>
     {% if app.user.roles == ['ROLE_APPRENANT'] %}
+        {% if  finish == null %}
         <div class="progress mt-4" style="height: 30px">
             <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ pourcentageFormation }}%;" aria-valuenow="{{ pourcentageFormation }}" aria-valuemin="0" aria-valuemax="100">{{ pourcentageFormation }}%</div>
         </div>
-
+            {% else %}
+                <div class="progress mt-4" style="height: 30px">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%;" aria-valuenow="100%" aria-valuemin="0" aria-valuemax="100">100% 👏 </div>
+                </div>
+        {% endif %}
     {% endif %}
+
 
 
     <div class="row mt-4" >
@@ -46,4 +52,7 @@
     </div>
     {% endif %}
 
+{% endblock %}
+{% block footer %}
+    {% include 'footer.html.twig' %}
 {% endblock %}
