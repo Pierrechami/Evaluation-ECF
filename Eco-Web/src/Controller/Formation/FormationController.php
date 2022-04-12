@@ -153,11 +153,13 @@ class FormationController extends AbstractController
             $pourcentageFormation = round($pourcentageFormation);
         }
 
+        $finish = $progressRepository->findOneBy(['user' => $this->getUser(),'formation' => $idformation,'formation_finished' => true]);
 
         return $this->render('formation/show.html.twig', [
             'formation' => $formation,
             'sectionsFormation' => $sectionFormation,
-            'pourcentageFormation' => $pourcentageFormation
+            'pourcentageFormation' => $pourcentageFormation,
+            'finish' => $finish
         ]);
     }
 

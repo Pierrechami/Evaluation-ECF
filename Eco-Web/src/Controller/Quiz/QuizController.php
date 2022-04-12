@@ -30,8 +30,8 @@ class QuizController extends AbstractController
             return $this->redirectToRoute('app');
         }
 
-
         $quizInstructeur = $quizRepository->findOneBy(['section' => ['id' => $id], 'user' => null]);
+
 
         $quizApprenant = $quizRepository->findOneBy(['section' => ['id' => $id], 'user' => ['id' => $app]]);
 

@@ -48,6 +48,7 @@ $(document).ready(function () {
         formationTerminees.style.display = "none";
         btnformationTerminees.style.backgroundColor = "white";
         btnformationTerminees.style.color = colorGray;
+
    })
 
     btnformationTerminees.addEventListener('click', () => {
