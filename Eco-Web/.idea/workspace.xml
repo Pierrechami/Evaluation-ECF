@@ -2,86 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6239d8a088f83.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6239db5da0783.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6239db7624193.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6239dc5412afa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623ae57fe542b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623ae5b6a1647.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623ae65b13c2e.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623aef15f39c7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623aff7806afa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623c7b6ceced1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623c81b82d34a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623c8375c9312.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623c83e5499f3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623c862f7043f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623d7bd182093.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623d9c3c56605.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623db95ecba56.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623ded845a8e1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/623ded8ee686e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/624177c2dcb86.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6241799df1265.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6241846af12c7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6241b05414c20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6242d9611c0f2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/624320f196757.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/624d6beadd4ab.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/624d6dfe01c6d.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/624d7b96c8d2f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Formation/6254552803fc3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/JS/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/JS/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6241ceb9d3c26.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6241cfc4320ce.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6241cfc432517.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6241cfc43315f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6241d4fa0a4ab.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6241d4fa0b30a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6242b7e74d9fb.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6242b8425bde7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62432da97bfdb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62432da97cfc3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545619a58a9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545619a59b5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545619a5a43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6254584b88787.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6254584b8a10e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625459bbd576d.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625459bbd5868.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625459bbd58fd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545a17ec5ed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545a17ec6dc.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545df780551.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Lesson/photo2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545df780672.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545df780710.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Lesson/photo3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545ea2ea448.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545ea2eaae0.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/Lesson/photo1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545ea2eab78.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545fdf5f225.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545fdf5f434.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62545ff288a11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6254600577ff1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62546005780d9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/62546005783e0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625467e4404ac.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625467e4406f4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625467e4407f5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6254689bc9bcd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/6254689bc9d0e.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625468bf6c5df.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625468bf6c6c0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Lesson/625468bf6c750.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Formation/FormationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Formation/FormationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Quiz/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Quiz/QuizController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lesson/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lesson/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/section/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/section/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home_page/home_page.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home_page/home_page.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +196,8 @@
       <workItem from="1649431242190" duration="6912000" />
       <workItem from="1649592939945" duration="8092000" />
       <workItem from="1649605775842" duration="23903000" />
-      <workItem from="1649750626856" duration="16108000" />
+      <workItem from="1649750626856" duration="17635000" />
+      <workItem from="1649834536704" duration="5923000" />
     </task>
     <servers />
   </component>
