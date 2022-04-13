@@ -45,7 +45,9 @@
                         <img src="{{ asset('Images/' ~ 'logo-ecoit-removebg.png') }}">
                         <p><strong class="text-carousel">L'équipe d'ECOIT s'engage à vous encadrer tout au long de votre
                                 formation.</strong></p>
-                        <p><a class="btn btn-lg btn-success" href="{{ path('login') }}">Se connecter</a></p>
+                        {% if app.user == null %}
+                            <p><a class="btn btn-lg btn-success" href="{{ path('login') }}">Se connecter</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -56,7 +58,7 @@
 
                 <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Soucieux de l'impact digital</h1>
+                        <h1 class="text-carousel">Soucieux de l'impact digital</h1>
                     </div>
                 </div>
             </div>
@@ -67,10 +69,12 @@
 
                 <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>Promo 2021</h1>
-                        <p>Inscris-toi dès maintenant et rejoins la session 2022.</p>
-                        <p><a class="btn btn-lg btn-success" href="{{ path('register_apprenant') }}">Inscription</a></p>
-
+                        <h1 class="text-carousel">Promo 2021</h1>
+                        <p class="text-carousel">Inscris-toi dès maintenant et rejoins la session 2022.</p>
+                        {% if app.user == null %}
+                            <p><a class="btn btn-lg btn-success" href="{{ path('register_apprenant') }}">Inscription</a>
+                            </p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
