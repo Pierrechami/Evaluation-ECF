@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/public/CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/CSS/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home_page/home_page.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home_page/home_page.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +193,8 @@
       <workItem from="1649592939945" duration="8092000" />
       <workItem from="1649605775842" duration="23903000" />
       <workItem from="1649750626856" duration="17635000" />
-      <workItem from="1649834536704" duration="5923000" />
+      <workItem from="1649834536704" duration="5948000" />
+      <workItem from="1649938448531" duration="4825000" />
     </task>
     <servers />
   </component>
