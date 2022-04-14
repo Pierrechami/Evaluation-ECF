@@ -113,6 +113,9 @@
       <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/twig/extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/doctrine/data-fixtures" />
+      <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/doctrine/doctrine-fixtures-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/fakerphp/faker" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
