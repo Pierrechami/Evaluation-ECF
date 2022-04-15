@@ -2,7 +2,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="keywords"
+          content="programmation ecologique estrie,developpement ecologique estrie,écologie développement humain,développement agro écologique,developpement photo écologique,développement urbain écologique,developpement ecologique,développement écologie urbaine, développement écologique ,développement web durable à l'école,développement web écologique,développement web durable à l'école primaire,éco développement définition ,web écolo, , meilleur monde, programmation informatique vert,meilleur web, bilan environnemental de votre site web,programmation écologique durable definition,développement écologique et durable"/>
+    <meta name="description" content="ECOIT est une plateforme de formation en ligne pour les développeurs soucieux de l'environnement écologique."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="author" content="Pierre"/>
+    <meta name="copyright" content="ECOIT"/>
+    <meta name="robots" content="index, follow, location"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+
+    <title>{% block title %}ECOIT !{% endblock %}</title>
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
     {% block stylesheets %}
@@ -25,9 +34,10 @@
 
     {% endblock %}
 
+
 </head>
 <body class="container">
-    <div class="contenue">
+<div class="contenue">
 
     {% block header %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded border">
@@ -156,6 +166,6 @@
     {% block footer %}
     {% endblock %}
 
-    </div>
+</div>
 </body>
 </html>

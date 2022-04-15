@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd0036dc-2575-461d-8a26-46bcb446b02b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Annexes/UML Diagramme de classes/UML diagramme de classes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eco-Web/src/Controller/Formation/FormationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Eco-Web/src/Controller/Formation/FormationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eco-Web/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Eco-Web/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eco-Web/templates/formation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Eco-Web/templates/formation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eco-Web/templates/quiz/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Eco-Web/templates/quiz/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eco-Web/templates/section/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/Eco-Web/templates/section/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +166,8 @@
       <workItem from="1647512105229" duration="60000" />
       <workItem from="1647512230138" duration="12234000" />
       <workItem from="1649950718692" duration="31000" />
-      <workItem from="1649950809159" duration="3583000" />
+      <workItem from="1649950809159" duration="3814000" />
+      <workItem from="1650008214972" duration="3030000" />
     </task>
     <servers />
   </component>

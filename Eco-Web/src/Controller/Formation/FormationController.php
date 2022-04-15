@@ -47,7 +47,7 @@ class FormationController extends AbstractController
         ]);
     }
 
-    # L'instructeur peut visualiser  et modifier uniquement ses formation
+    # L'instructeur peut visualiser  et modifier uniquement ses formations
 
     /**
      * @Route("/liste", name="liste_formations", methods={"GET"})
