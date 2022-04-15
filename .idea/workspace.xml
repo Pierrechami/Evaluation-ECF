@@ -129,6 +129,7 @@
       <path value="$PROJECT_DIR$/Eco-Web/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/Eco-Web/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/Eco-Web/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/Eco-Web/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="26QI2r9Slx1hN22wdwLMeAtwytO" />
@@ -162,6 +163,7 @@
       <workItem from="1649950718692" duration="31000" />
       <workItem from="1649950809159" duration="3814000" />
       <workItem from="1650008214972" duration="5226000" />
+      <workItem from="1650040810373" duration="449000" />
     </task>
     <servers />
   </component>
