@@ -37,7 +37,7 @@ php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
 
 # Insertions des jeux de données (fixtures)
-php bin/console doctrine:fixtures:load --no-interaction
+php bin/console doctrine:fixtures:load 
 ```
  ***
 
