@@ -137,6 +137,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="26TDtSel1VbRaRPJfOUH219GUCm" />
@@ -195,6 +196,7 @@
       <workItem from="1649750626856" duration="17635000" />
       <workItem from="1649834536704" duration="5948000" />
       <workItem from="1649938448531" duration="4825000" />
+      <workItem from="1650031792198" duration="1249000" />
     </task>
     <servers />
   </component>

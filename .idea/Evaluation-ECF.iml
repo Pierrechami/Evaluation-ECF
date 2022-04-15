@@ -116,6 +116,7 @@
       <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/doctrine/migrations" />
       <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/doctrine/data-fixtures" />
       <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/doctrine/doctrine-migrations-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/Eco-Web/vendor/symfony/apache-pack" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

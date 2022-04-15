@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd0036dc-2575-461d-8a26-46bcb446b02b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220315151424.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220315153351.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220315154410.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220315160036.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220315160917.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220329090030.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220331084811.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220331092758.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220331095734.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220331100111.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220404134348.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220404143453.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220404143734.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220404144142.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220405082847.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220405083559.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220405092429.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220405095342.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220407114504.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220407114724.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220407115224.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220407115313.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eco-Web/migrations/Version20220407143335.php" beforeDir="false" />
-    </list>
+    <list default="true" id="fd0036dc-2575-461d-8a26-46bcb446b02b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,6 +129,7 @@
       <path value="$PROJECT_DIR$/Eco-Web/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/Eco-Web/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/Eco-Web/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/Eco-Web/vendor/symfony/apache-pack" />
     </include_path>
   </component>
   <component name="ProjectId" id="26QI2r9Slx1hN22wdwLMeAtwytO" />
@@ -185,7 +162,8 @@
       <workItem from="1647512230138" duration="12234000" />
       <workItem from="1649950718692" duration="31000" />
       <workItem from="1649950809159" duration="3814000" />
-      <workItem from="1650008214972" duration="4435000" />
+      <workItem from="1650008214972" duration="5226000" />
+      <workItem from="1650040810373" duration="449000" />
     </task>
     <servers />
   </component>
