@@ -47,7 +47,7 @@ class SectionController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/liste/lesson/instructeur", name="liste_lesson_instructeur", methods={"GET"})
+     * @Route("/{id}/liste/lesson/instructeur", name="liste_lesson_instructeur",  methods={"GET", "POST"})
      */
     public function listeLessonInstructeur($id , SectionRepository $sectionRepository , LessonRepository $lessonRepository, FormationRepository $formationRepository): Response
     {
