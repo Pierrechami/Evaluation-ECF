@@ -9,7 +9,8 @@ Les documents annexes sont disponibles dans le dossier ANNEXES :
 * Charte graphique
 * Manuel d'utilisation
 * Documentation technique
-* Wireframes
+* Wireframes :  https://www.figma.com/file/yNnEiAPajFN94ICjYyfa4b/Untitled?node-id=0%3A1
+* Trello : https://trello.com/b/AzvcTytz/ecf
 
  ***
 
