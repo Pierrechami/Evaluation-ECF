@@ -65,6 +65,7 @@ class SectionController extends AbstractController
         }
 
 
+
         return $this->render('formation/instructeur/liste_lesson.html.twig', [
             'sectionEncour' => $sectionEncour,
             'lessons' => $lessons,
