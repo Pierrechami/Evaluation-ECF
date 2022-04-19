@@ -23,7 +23,7 @@ class QuizType extends AbstractType
             ->add('response1', ChoiceType::class, [
                 'label' => 'Réponse : ',
                 'choices' => [
-                    'vrais' => 1,
+                    'vrai' => 1,
                     'faux' =>0,
                 ],
                 'expanded' => true,
@@ -38,7 +38,7 @@ class QuizType extends AbstractType
             ->add('response2', ChoiceType::class, [
                 'label' => 'Réponse : ',
                 'choices' => [
-                    'vrais' => 1,
+                    'vrai' => 1,
                     'faux' =>0,
                 ],
                 'expanded' => true,
@@ -53,7 +53,7 @@ class QuizType extends AbstractType
             ->add('response3', ChoiceType::class, [
                 'label' => 'Réponse : ',
                 'choices' => [
-                    'vrais' => 1,
+                    'vrai' => 1,
                     'faux' =>0,
                 ],
                 'expanded' => true,
