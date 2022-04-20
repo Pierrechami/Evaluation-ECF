@@ -46,7 +46,7 @@ php bin/console doctrine:fixtures:load
 
 Après le chargement des fixtures, tu peux utiliser ces identifiants pour : 
 
-* Un dministrateur 
+* Un administrateur 
 ```
 Email =  chaminadepierre.24@gmail.com
 Mdp = superAdmin
