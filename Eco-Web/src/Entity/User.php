@@ -10,84 +10,53 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cet E-mail")
- */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet E-mail')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Stringable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
+    #[ORM\Column(type: 'string')]
+    private ?string $password = null;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $first_name;
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
+    private ?string $first_name = null;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $name;
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $pseudo;
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
+    private ?string $pseudo = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $profile_picture;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $profile_picture = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description_specialty;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $description_specialty = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $is_accepted;
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $is_accepted = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="user", orphanRemoval=true)
-     */
-    private $formations;
+    #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'user', orphanRemoval: true)]
+    private \Doctrine\Common\Collections\ArrayCollection|array $formations;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
-     */
-    private $comments;
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
+    private \Doctrine\Common\Collections\ArrayCollection|array $comments;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="user")
-     */
-    private $quizzes;
+    #[ORM\OneToMany(targetEntity: Quiz::class, mappedBy: 'user')]
+    private \Doctrine\Common\Collections\ArrayCollection|array $quizzes;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="user")
-     */
-    private $progress;
+    #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'user')]
+    private \Doctrine\Common\Collections\ArrayCollection|array $progress;
 
     public function __construct()
     {
@@ -288,7 +257,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         // to show the name of the Category in the select
         return (string) $this->email;

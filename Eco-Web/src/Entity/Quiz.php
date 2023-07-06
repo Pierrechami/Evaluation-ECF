@@ -5,75 +5,49 @@ namespace App\Entity;
 use App\Repository\QuizRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=QuizRepository::class)
- */
+#[ORM\Entity(repositoryClass: QuizRepository::class)]
 class Quiz
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="quizzes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $section;
+    #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'quizzes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?\App\Entity\Section $section = null;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="quizzes")
-     */
-    private $user;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'quizzes')]
+    private ?\App\Entity\User $user = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $question1;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $question1 = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private $response1;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $not_good1;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $not_good1 = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $question2;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $question2 = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private $response2;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $not_good2;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $not_good2 = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $question3;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $question3 = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private $response3;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $not_good3;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $not_good3 = null;
 
     public function getId(): ?int
     {

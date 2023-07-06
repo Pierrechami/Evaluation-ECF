@@ -16,16 +16,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/formation")
- */
+#[Route(path: '/formation')]
 class FormationController extends AbstractController
 {
     # Tous le monde peut visualisé les formations mais pas les modifier
-
-    /**
-     * @Route("/", name="app_formation_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'app_formation_index', methods: ['GET'])]
     public function index(FormationRepository $formationRepository, ProgressRepository $progressRepository): Response
     {
         if ($this->getUser() !== null){
@@ -48,10 +43,7 @@ class FormationController extends AbstractController
     }
 
     # L'instructeur peut visualiser  et modifier uniquement ses formations
-
-    /**
-     * @Route("/liste", name="liste_formations", methods={"GET"})
-     */
+    #[Route(path: '/liste', name: 'liste_formations', methods: ['GET'])]
     public function liste(FormationRepository $formationRepository): Response
     {
         if( $this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
@@ -66,9 +58,7 @@ class FormationController extends AbstractController
 
 
 
-    /**
-     * @Route("/new", name="app_formation_new", methods={"GET", "POST"})
-     */
+    #[Route(path: '/new', name: 'app_formation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, FormationRepository $formationRepository): Response
     {
         if($this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']){
@@ -96,7 +86,7 @@ class FormationController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Formation',
                         $newFilename
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -115,9 +105,7 @@ class FormationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_formation_show", methods={"GET", "POST"})
-     */
+    #[Route(path: '/{id}', name: 'app_formation_show', methods: ['GET', 'POST'])]
     public function show(Formation $formation , SectionRepository $sectionRepository , $id, ProgressRepository $progressRepository): Response
     {
         $sectionFormation = $sectionRepository->findBy(['formation' => ['id'=> $id]]);
@@ -163,9 +151,7 @@ class FormationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/instructeur", name="formation_show_instructeur", methods={"GET"})
-     */
+    #[Route(path: '/{id}/instructeur', name: 'formation_show_instructeur', methods: ['GET'])]
     public function showInstructeur(Formation $formation , SectionRepository $sectionRepository , $id): Response
     {
         if($this->getUser() == null){
@@ -194,9 +180,7 @@ class FormationController extends AbstractController
 
 
 
-    /**
-     * @Route("/{id}/edit", name="app_formation_edit", methods={"GET", "POST"})
-     */
+    #[Route(path: '/{id}/edit', name: 'app_formation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Formation $formation, FormationRepository $formationRepository, $id): Response
     {
         if($this->getUser() == null){
@@ -224,9 +208,7 @@ class FormationController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_formation_delete", methods={"POST"})
-     */
+    #[Route(path: '/{id}', name: 'app_formation_delete', methods: ['POST'])]
     public function delete(Request $request, Formation $formation, FormationRepository $formationRepository): Response
     {
 

@@ -16,9 +16,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class RegistrationController extends AbstractController
 {
-    /**
-     * @Route("/register/instructeur", name="register_instructeur")
-     */
+    #[Route(path: '/register/instructeur', name: 'register_instructeur')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $user = new User();
@@ -48,7 +46,7 @@ class RegistrationController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/uploads',
                         $newFilename
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 

@@ -14,16 +14,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/quiz")
- */
+#[Route(path: '/quiz')]
 class QuizController extends AbstractController
 {
     # résultat du quiz
-
-    /**
-     * @Route("/show/{id}/response/apprenant/{app}", name="app_quiz_index", methods={"GET", "POST"})
-     */
+    #[Route(path: '/show/{id}/response/apprenant/{app}', name: 'app_quiz_index', methods: ['GET', 'POST'])]
     public function index(QuizRepository $quizRepository, $id, $app): Response
     {
         if ($this->getUser() == null || intval($app) !== $this->getUser()->getId() ) {
@@ -46,10 +41,7 @@ class QuizController extends AbstractController
     }
 
     # Création d'une question par un instructeur
-
-    /**
-     * @Route("/new/{id}", name="app_quiz_new", methods={"GET", "POST"})
-     */
+    #[Route(path: '/new/{id}', name: 'app_quiz_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, $id, SectionRepository $sectionRepository, FormationRepository $formationRepository, QuizRepository $quizRepository): Response
     {
 
@@ -90,9 +82,7 @@ class QuizController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_quiz_show", methods={"GET"})
-     */
+    #[Route(path: '/{id}', name: 'app_quiz_show', methods: ['GET'])]
     public function show(Quiz $quiz): Response
     {
         return $this->render('quiz/show.html.twig', [
@@ -103,10 +93,7 @@ class QuizController extends AbstractController
 
 
     # Quand l'apprenant repond au question
-
-    /**
-     * @Route("/{id}/response/apprenant", name="app_quiz_edit", methods={"GET", "POST"})
-     */
+    #[Route(path: '/{id}/response/apprenant', name: 'app_quiz_edit', methods: ['GET', 'POST'])]
     public function ResponseApprenant(Request $request, EntityManagerInterface $entityManager, $id, QuizRepository $quizRepository, SectionRepository $sectionRepository): Response
     {
         if ($quizRepository->findBy(['section' => ['id' => $id]]) == []) {
@@ -160,9 +147,7 @@ class QuizController extends AbstractController
 
 
 
-    /**
-     * @Route("/{id}", name="app_quiz_delete", methods={"POST"})
-     */
+    #[Route(path: '/{id}', name: 'app_quiz_delete', methods: ['POST'])]
     public function delete(Request $request, Quiz $quiz, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $quiz->getId(), $request->request->get('_token'))) {

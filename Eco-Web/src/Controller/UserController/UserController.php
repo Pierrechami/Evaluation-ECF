@@ -15,16 +15,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/user")
- */
+#[Route(path: '/user')]
 class UserController extends AbstractController
 {
 
 
-    /**
-     * @Route("/", name="app_user_index", methods={"GET"})
-     */
+    #[Route(path: '/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
         if ($this->getUser()->getRoles()[0] !== 'ROLE_ADMIN') {
@@ -36,9 +32,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="app_user_new", methods={"GET", "POST"})
-     */
+    #[Route(path: '/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getRoles()[0] !== 'ROLE_ADMIN') {
@@ -77,7 +71,7 @@ class UserController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/uploads',
                         $newFilename
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -100,9 +94,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_user_show", methods={"GET"})
-     */
+    #[Route(path: '/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user, $id): Response
     {
 
@@ -117,9 +109,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app');
     }
 
-    /**
-     * @Route("/{id}/edit", name="app_user_edit", methods={"GET", "POST"})
-     */
+    #[Route(path: '/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository, $id): Response
     {
 
@@ -145,9 +135,7 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app');
     }
 
-    /**
-     * @Route("/delete/{id}", name="app_user_delete", methods={"GET","POST"})
-     */
+    #[Route(path: '/delete/{id}', name: 'app_user_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository, $id): Response
     {
 

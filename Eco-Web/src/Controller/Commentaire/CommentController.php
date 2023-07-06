@@ -10,14 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/admin")
- */
+#[Route(path: '/admin')]
 class CommentController extends AbstractController
 {
-    /**
-     * @Route("/comment", name="app_comment_index", methods={"GET"})
-     */
+
+    #[Route('/comment', name: 'app_comment_index', methods: ['GET'])]
     public function index(CommentRepository $commentRepository): Response
     {
         return $this->render('comment/index.html.twig', [
@@ -25,9 +22,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/comment/new", name="app_comment_new", methods={"GET", "POST"})
-     */
+    #[Route(path: '/comment/new', name: 'app_comment_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CommentRepository $commentRepository): Response
     {
         $comment = new Comment();
@@ -45,9 +40,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/comment/{id}", name="app_comment_show", methods={"GET"})
-     */
+    #[Route(path: '/comment/{id}', name: 'app_comment_show', methods: ['GET'])]
     public function show(Comment $comment): Response
     {
         return $this->render('comment/show.html.twig', [
@@ -55,9 +48,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/comment/{id}/edit", name="app_comment_edit", methods={"GET", "POST"})
-     */
+    #[Route(path: '/comment/{id}/edit', name: 'app_comment_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
         $form = $this->createForm(CommentType::class, $comment);
@@ -74,9 +65,7 @@ class CommentController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/comment/{id}", name="app_comment_delete", methods={"POST"})
-     */
+    #[Route(path: '/comment/{id}', name: 'app_comment_delete', methods: ['POST'])]
     public function delete(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {

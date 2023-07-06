@@ -10,9 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class LoginController extends AbstractController
 {
-    /**
-     * @Route("/login", name="login")
-     */
+    #[Route(path: '/login', name: 'login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
 
@@ -25,10 +23,8 @@ class LoginController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/logout", name="logout")
-     */
-    public function logout():void
+    #[Route(path: '/logout', name: 'logout')]
+    public function logout():never
     {
         throw new Exception('Oups');
     }
