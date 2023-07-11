@@ -32,16 +32,16 @@ class Lesson
 
     #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'lessons')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\Section $section = null;
+    private ?Section $section = null;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
 
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'lesson', orphanRemoval: true)]
-    private \Doctrine\Common\Collections\ArrayCollection|array $comments;
+    private Collection $comments;
 
     #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'lesson')]
-    private \Doctrine\Common\Collections\ArrayCollection|array $progress;
+    private Collection $progress;
 
     public function __construct()
     {

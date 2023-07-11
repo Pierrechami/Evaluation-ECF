@@ -13,17 +13,15 @@ class Comment
     #[ORM\Column(type: 'integer')]
     private $id;
 
-
-
     #[ORM\Column(type: 'text')]
     private ?string $content = null;
 
     #[ORM\ManyToOne(targetEntity: Lesson::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\Lesson $lesson = null;
+    private ?Lesson $lesson = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
-    private ?\App\Entity\User $user = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {

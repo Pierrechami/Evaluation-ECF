@@ -21,15 +21,15 @@ class Progress
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'progress')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\User $user = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne(targetEntity: Lesson::class, inversedBy: 'progress')]
     #[ORM\JoinColumn(nullable: true)]
-    private ?\App\Entity\Lesson $lesson = null;
+    private ?Lesson $lesson = null;
 
     #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'progress')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\Formation $formation = null;
+    private ?Formation $formation = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
     private ?int $formation_progress = null;

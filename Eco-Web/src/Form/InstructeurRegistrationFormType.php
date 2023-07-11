@@ -31,7 +31,7 @@ class InstructeurRegistrationFormType extends AbstractType
                         'message' => 'Vous avez oublié votre mot de passe.',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 9,
                         'minMessage' => 'Votre mot de passe doit au moins comporter {{ limit }} caractères.',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,

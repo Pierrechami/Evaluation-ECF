@@ -20,17 +20,10 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(ApprenantRegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-
-
-
         $user->setIsAccepted(true);
         $user->setRoles(['ROLE_APPRENANT']);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if($user->getEmail()){
-                $user->setRoles(['ROLE_ADMIN']);
-            }
-            // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,

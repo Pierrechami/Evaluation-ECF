@@ -26,13 +26,13 @@ class Formation implements \Stringable
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'formations')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\User $user = null;
+    private ?User $user = null;
 
     #[ORM\OneToMany(targetEntity: Section::class, mappedBy: 'formation', orphanRemoval: true)]
-    private \Doctrine\Common\Collections\ArrayCollection|array $sections;
+    private Collection $sections;
 
     #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'formation')]
-    private \Doctrine\Common\Collections\ArrayCollection|array $progress;
+    private Collection $progress;
 
     public function __construct()
     {

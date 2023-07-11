@@ -47,16 +47,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     private ?bool $is_accepted = null;
 
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'user', orphanRemoval: true)]
-    private \Doctrine\Common\Collections\ArrayCollection|array $formations;
+    private Collection $formations;
 
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
-    private \Doctrine\Common\Collections\ArrayCollection|array $comments;
+    private Collection $comments;
 
     #[ORM\OneToMany(targetEntity: Quiz::class, mappedBy: 'user')]
-    private \Doctrine\Common\Collections\ArrayCollection|array $quizzes;
+    private Collection $quizzes;
 
     #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'user')]
-    private \Doctrine\Common\Collections\ArrayCollection|array $progress;
+    private Collection $progress;
 
     public function __construct()
     {
@@ -107,9 +107,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-     #   $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 

@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
 
         // admin
         $admin = new User();
-        $admin->setEmail('chaminadepierre.24@gmail.com');
+        $admin->setEmail('');
         $admin->setPseudo('admin');
         $passwordAdmin = $this->hasher->hashPassword($admin, 'superAdmin');
         $admin->setPassword($passwordAdmin);

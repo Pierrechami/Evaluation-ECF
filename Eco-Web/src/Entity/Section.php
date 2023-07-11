@@ -20,13 +20,13 @@ class Section implements \Stringable
 
     #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'sections')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\Formation $formation = null;
+    private ?Formation $formation = null;
 
     #[ORM\OneToMany(targetEntity: Lesson::class, mappedBy: 'section', orphanRemoval: true)]
-    private \Doctrine\Common\Collections\ArrayCollection|array $lessons;
+    private Collection $lessons;
 
     #[ORM\OneToMany(targetEntity: Quiz::class, mappedBy: 'section', orphanRemoval: true)]
-    private \Doctrine\Common\Collections\ArrayCollection|array $quizzes;
+    private Collection$quizzes;
 
 
     public function __construct()
