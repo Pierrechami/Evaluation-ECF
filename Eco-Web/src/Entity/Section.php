@@ -7,38 +7,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=SectionRepository::class)
- */
-class Section
+#[ORM\Entity(repositoryClass: SectionRepository::class)]
+class Section implements \Stringable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $title = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="sections")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $formation;
+    #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'sections')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Formation $formation = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Lesson::class, mappedBy="section", orphanRemoval=true)
-     */
-    private $lessons;
+    #[ORM\OneToMany(targetEntity: Lesson::class, mappedBy: 'section', orphanRemoval: true)]
+    private Collection $lessons;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="section", orphanRemoval=true)
-     */
-    private $quizzes;
+    #[ORM\OneToMany(targetEntity: Quiz::class, mappedBy: 'section', orphanRemoval: true)]
+    private Collection$quizzes;
 
 
     public function __construct()
@@ -113,7 +101,7 @@ class Section
 
 
 
-    public function __toString()
+    public function __toString(): string
     {
         // to show the name of the Category in the select
         return (string) $this->title;

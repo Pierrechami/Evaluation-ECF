@@ -9,9 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomePageController extends AbstractController
 {
-    /**
-     * @Route("/", name="app")
-     */
+    #[Route(path: '/', name: 'app')]
     public function index(FormationRepository $formationRepository): Response
     {
         $formations = $formationRepository->findBy([], ['id' => 'desc'], 3);

@@ -21,15 +21,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/lesson")
- */
+#[Route(path: '/lesson')]
 class LessonController extends AbstractController
 {
 
-    /**
-     * @Route("/new", name="app_lesson_new", methods={"GET", "POST"})
-     */
+    #[Route(path: '/new', name: 'app_lesson_new', methods: ['GET', 'POST'])]
     public function new(Request $request, LessonRepository $lessonRepository, SectionRepository $sectionRepository, FormationRepository $formationRepository): Response
     {
         if ($this->getUser() == null || $this->getUser()->getRoles() !== ['ROLE_INSTRUCTEUR']) {
@@ -60,7 +56,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -80,7 +76,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename2
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -100,7 +96,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename3
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -122,10 +118,7 @@ class LessonController extends AbstractController
     }
 
     #  Création d'une leçon sans passer par la case "créer une formation"
-
-    /**
-     * @Route("/new/lesson/{id}", name="new_lesson", methods={"GET", "POST"})
-     */
+    #[Route(path: '/new/lesson/{id}', name: 'new_lesson', methods: ['GET', 'POST'])]
     public function newLesson(Request $request, LessonRepository $lessonRepository, $id, SectionRepository $sectionRepository, FormationRepository $formationRepository): Response
     {
 
@@ -160,7 +153,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -182,7 +175,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename2
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -204,7 +197,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename3
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -226,9 +219,7 @@ class LessonController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_lesson_show",  methods={"GET", "POST"})
-     */
+    #[Route(path: '/{id}', name: 'app_lesson_show', methods: ['GET', 'POST'])]
     public function show(Lesson $lesson, Request $request, CommentRepository $commentRepository, $id, ProgressRepository $progressRepository, SectionRepository $sectionRepository, FormationRepository $formationRepository): Response
     {
         if ($this->getUser() == null) {
@@ -345,9 +336,7 @@ class LessonController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/edit", name="app_lesson_edit", methods={"GET", "POST"})
-     */
+    #[Route(path: '/{id}/edit', name: 'app_lesson_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Lesson $lesson, LessonRepository $lessonRepository, FormationRepository $formationRepository): Response
     {
         if ($this->getUser() == null) {
@@ -381,7 +370,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -403,7 +392,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename2
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 
@@ -425,7 +414,7 @@ class LessonController extends AbstractController
                         $this->getParameter('kernel.project_dir') . '/public/Lesson',
                         $newFilename3
                     );
-                } catch (FileException $e) {
+                } catch (FileException) {
                     $this->addFlash('error', 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
 

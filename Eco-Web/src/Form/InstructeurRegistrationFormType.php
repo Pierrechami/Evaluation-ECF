@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -14,6 +16,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class InstructeurRegistrationFormType extends AbstractType
 {
@@ -31,11 +34,15 @@ class InstructeurRegistrationFormType extends AbstractType
                         'message' => 'Vous avez oublié votre mot de passe.',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 9,
                         'minMessage' => 'Votre mot de passe doit au moins comporter {{ limit }} caractères.',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
+                    new Regex([
+                        'pattern' => '/^(?=.*[A-Z])(?=.*[0-9]).*$/',
+                        'message' => 'Le mot de passe doit contenir au moins une majuscule et un chiffre.',
+                    ])
                 ],
             ])
             ->add('firstName', TextType::class, [
@@ -75,6 +82,10 @@ class InstructeurRegistrationFormType extends AbstractType
                     ])
                 ],
             ])
+            ->add('captcha', Recaptcha3Type::class, [
+                'constraints' => new Recaptcha3(),
+                'action_name' => 'Inscription',
+            ]);
         ;
     }
 

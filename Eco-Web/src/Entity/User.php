@@ -9,85 +9,58 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cet E-mail")
- */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet E-mail')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Stringable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
+    #[ORM\Column(type: 'string')]
+    private ?string $password = null;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $first_name;
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
+    private ?string $first_name = null;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $name;
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     */
-    private $pseudo;
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
+    private ?string $pseudo = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $profile_picture;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $profile_picture = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description_specialty;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $description_specialty = null;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $is_accepted;
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $is_accepted = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="user", orphanRemoval=true)
-     */
-    private $formations;
+    #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $formations;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user")
-     */
-    private $comments;
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'user')]
+    private Collection $comments;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="user")
-     */
-    private $quizzes;
+    #[ORM\OneToMany(targetEntity: Quiz::class, mappedBy: 'user')]
+    private Collection $quizzes;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="user")
-     */
-    private $progress;
+    #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'user')]
+    private Collection $progress;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
     public function __construct()
     {
@@ -138,9 +111,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-     #   $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
@@ -154,7 +124,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -288,7 +258,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         // to show the name of the Category in the select
         return (string) $this->email;
@@ -382,6 +352,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $progress->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

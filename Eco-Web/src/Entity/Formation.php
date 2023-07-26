@@ -7,48 +7,32 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=FormationRepository::class)
- */
-class Formation
+#[ORM\Entity(repositoryClass: FormationRepository::class)]
+class Formation implements \Stringable
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $title = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $picture = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $teaser_text;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $teaser_text = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="formations")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'formations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Section::class, mappedBy="formation", orphanRemoval=true)
-     */
-    private $sections;
+    #[ORM\OneToMany(targetEntity: Section::class, mappedBy: 'formation', orphanRemoval: true)]
+    private Collection $sections;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="formation")
-     */
-    private $progress;
+    #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'formation')]
+    private Collection $progress;
 
     public function __construct()
     {
@@ -139,7 +123,7 @@ class Formation
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         // to show the name of the Category in the select
         return (string) $this->title;

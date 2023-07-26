@@ -5,50 +5,34 @@ namespace App\Entity;
 use App\Repository\ProgressRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=ProgressRepository::class)
- */
+#[ORM\Entity(repositoryClass: ProgressRepository::class)]
 class Progress
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $lesson_finished;
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $lesson_finished = null;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $formation_finished;
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $formation_finished = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="progress")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'progress')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Lesson::class, inversedBy="progress")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $lesson;
+    #[ORM\ManyToOne(targetEntity: Lesson::class, inversedBy: 'progress')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Lesson $lesson = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Formation::class, inversedBy="progress")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $formation;
+    #[ORM\ManyToOne(targetEntity: Formation::class, inversedBy: 'progress')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Formation $formation = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $formation_progress;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $formation_progress = null;
 
     public function getId(): ?int
     {

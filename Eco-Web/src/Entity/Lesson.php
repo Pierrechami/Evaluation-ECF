@@ -7,63 +7,41 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=LessonRepository::class)
- */
+#[ORM\Entity(repositoryClass: LessonRepository::class)]
 class Lesson
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $content;
+    #[ORM\Column(type: 'text')]
+    private ?string $content = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $video;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $video = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picture1;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $picture1 = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picture2;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $picture2 = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $picture3;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $picture3 = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="lessons")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $section;
+    #[ORM\ManyToOne(targetEntity: Section::class, inversedBy: 'lessons')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Section $section = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $title = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="lesson", orphanRemoval=true)
-     */
-    private $comments;
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'lesson', orphanRemoval: true)]
+    private Collection $comments;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Progress::class, mappedBy="lesson")
-     */
-    private $progress;
+    #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'lesson')]
+    private Collection $progress;
 
     public function __construct()
     {

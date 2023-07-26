@@ -41,7 +41,7 @@
                     label: 'E-mail :',
                     'attr': {'class': 'mb-3'}
                 }) }}
-                {{ form_row(registrationForm.plainPassword, {
+                {{ form_row(registrationForm.password, {
                     label: 'Mot de passe :',
                     'attr': {'class': 'mb-3'}
                 }) }}
@@ -49,7 +49,6 @@
                     label: 'Pseudo :',
                     'attr': {'class': 'mb-3'}
                 }) }}
-
 
                 <button type="submit" class="btn btn-success">S'inscrire</button>
                 {{ form_end(registrationForm) }}
