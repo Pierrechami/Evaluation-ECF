@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Formation;
+namespace App\Tests\Controller\Formation;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +11,6 @@ class FormationControllerTest extends PantherTestCase
 
     public function testNew(): void
     {
-        // Créez un client HTTP pour interagir avec votre application
         $client = static::createClient();
 
         $session = $client->getContainer()->get('session');
@@ -36,7 +35,6 @@ class FormationControllerTest extends PantherTestCase
         $client->submit($form);
 
         $this->assertTrue($client->getResponse()->isRedirect('/section/new'));
-
     }
 
 
