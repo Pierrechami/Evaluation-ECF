@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet E-mail')]
@@ -43,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $description_specialty = null;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private ?bool $is_accepted = null;
 
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'user', orphanRemoval: true)]
@@ -57,6 +58,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
 
     #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'user')]
     private Collection $progress;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
     public function __construct()
     {
@@ -120,7 +124,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -348,6 +352,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
                 $progress->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

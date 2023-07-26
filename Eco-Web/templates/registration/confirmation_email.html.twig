@@ -1,0 +1,25 @@
+{#<h1>Hi! Please confirm your email!</h1>#}
+
+{#<p>#}
+{#    Please confirm your email address by clicking the following link: <br><br>#}
+{#    <a href="{{ signedUrl|raw }}">Confirm my Email</a>.#}
+{#    This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.#}
+{#</p>#}
+
+{#<p>#}
+{#    Cheers!#}
+{#</p>#}
+
+ <h1>Welcome !  </h1>
+
+<p>Sincères félicitations et bienvenue dans la famille Ecoit ! Nous sommes ravis de t'accueillir parmi les jeunes développeurs passionnés qui cherchent à se former et à progresser. Ta décision de rejoindre notre communauté dynamique ouvre la voie à de nouvelles opportunités et à un avenir prometteur. Prépare-toi à vivre une expérience d'apprentissage enrichissante et stimulante. Nous sommes impatients de te voir briller et d'accompagner ta croissance dans le monde de la programmation. Bienvenue chez Ecoit !"</p>
+<p>
+    Avant de pouvoir accéder à toutes les formations que l'on propose, il faut que tu confirme ton adresse mail en cliquant sur le lien juste en bas.
+    <br><br>
+    <a href="{{ signedUrl|raw }}">Confirme ton email</a>.
+    Le lien expire dans 1 heure.
+</p>
+{# {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }} {{ expiresAtMessageKey }}#}
+<p>
+    Cheers!
+</p>

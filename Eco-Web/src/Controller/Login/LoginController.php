@@ -2,6 +2,8 @@
 
 namespace App\Controller\Login;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -16,6 +18,7 @@ class LoginController extends AbstractController
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+
 
         return $this->render('login/index.html.twig', [
             'error' => $error,

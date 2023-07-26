@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route(path: '/formation')]
 class FormationController extends AbstractController
 {
-    # Tous le monde peut visualisé les formations mais pas les modifier
+
     #[Route(path: '/', name: 'app_formation_index', methods: ['GET'])]
     public function index(FormationRepository $formationRepository, ProgressRepository $progressRepository): Response
     {

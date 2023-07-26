@@ -23,6 +23,7 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(InstructeurRegistrationFormType::class, $user);
         $form->handleRequest($request);
         $user->setIsAccepted(false);
+        $user->setIsVerified(true);
         $user->setRoles(['ROLE_POSTULANT']);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,8 +50,6 @@ class RegistrationController extends AbstractController
                 } catch (FileException) {
                     $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
-
-
                 $user->setProfilePicture($newFilename);
             }
 
