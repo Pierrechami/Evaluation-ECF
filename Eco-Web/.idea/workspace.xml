@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/Controller/HomePage/HomePageControllerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Controller/Register/RegistrationControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/Evaluation-ECF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Evaluation-ECF.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Eco-Web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Eco-Web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.phpunit.cache/test-results" beforeDir="false" afterPath="$PROJECT_DIR$/.phpunit.cache/test-results" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Formation/FormationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Controller/Formation/FormationControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Instructeur/InstructeurRegistrationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Controller/Instructeur/InstructeurRegistrationControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Register/RegistrationControllerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +250,7 @@
       <workItem from="1689255957450" duration="21714000" />
       <workItem from="1689599848127" duration="112000" />
       <workItem from="1689601383516" duration="570000" />
-      <workItem from="1690220549839" duration="9657000" />
+      <workItem from="1690220549839" duration="12511000" />
     </task>
     <servers />
   </component>
