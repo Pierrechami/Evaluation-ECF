@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Tests/Controller/HomePage/HomePageControllerTest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/Controller/Register/RegistrationControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/Evaluation-ECF.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Evaluation-ECF.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Eco-Web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Eco-Web.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.phpunit.cache/test-results" beforeDir="false" afterPath="$PROJECT_DIR$/.phpunit.cache/test-results" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Formation/FormationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Controller/Formation/FormationControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Instructeur/InstructeurRegistrationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Controller/Instructeur/InstructeurRegistrationControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Register/RegistrationControllerTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20230712132307.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20230830143852.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Formation/FormationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Formation/FormationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomePage/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomePage/HomePageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Login/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Login/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Section/SectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Section/SectionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/EmailVerifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/EmailVerifier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/UserChecker.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserChecker.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,15 +194,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "settings.editor.selected.configurable": "web-ide.project.structure",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -260,7 +265,8 @@
       <workItem from="1689255957450" duration="21714000" />
       <workItem from="1689599848127" duration="112000" />
       <workItem from="1689601383516" duration="570000" />
-      <workItem from="1690220549839" duration="9657000" />
+      <workItem from="1690220549839" duration="17156000" />
+      <workItem from="1693297328279" duration="16455000" />
     </task>
     <servers />
   </component>

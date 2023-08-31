@@ -59,8 +59,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
     #[ORM\OneToMany(targetEntity: Progress::class, mappedBy: 'user')]
     private Collection $progress;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private ?bool $isVerified = null;
 
     public function __construct()
     {
@@ -356,16 +356,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \String
         return $this;
     }
 
-    public function isVerified(): bool
+    /**
+     * @return bool|null
+     */
+    public function getIsVerified(): ?bool
     {
         return $this->isVerified;
     }
 
-
-    public function setIsVerified(bool $isVerified): static
+    /**
+     * @param bool|null $isVerified
+     */
+    public function setIsVerified(?bool $isVerified): self
     {
         $this->isVerified = $isVerified;
-
         return $this;
+
     }
 }

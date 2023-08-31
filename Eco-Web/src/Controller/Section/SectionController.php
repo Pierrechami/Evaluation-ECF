@@ -28,12 +28,9 @@ class SectionController extends AbstractController
             return $this->redirectToRoute('app');
         }
 
-
-
         $sectionEncour = $sectionRepository->findBy(['id' => $id])[0];
         $formationsectionId = $sectionEncour->getFormation()->getId();
         $lessons = $lessonRepository->findBy(['section' => ['id' => $sectionEncour->getId()]]);
-
 
         return $this->render('section/index.html.twig', [
             'sectionEncour' => $sectionEncour,
@@ -57,8 +54,6 @@ class SectionController extends AbstractController
         if ($formationRepository->findBy(['id' => $formationsectionId])[0]->getUser()->getId() !== $this->getUser()->getId()){
             return $this->redirectToRoute('app');
         }
-
-
 
         return $this->render('formation/instructeur/liste_lesson.html.twig', [
             'sectionEncour' => $sectionEncour,
@@ -160,7 +155,6 @@ class SectionController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$section->getId(), $request->request->get('_token'))) {
             $sectionRepository->remove($section);
         }
-
         return $this->redirectToRoute('app_section_index', [], Response::HTTP_SEE_OTHER);
     }
 }
