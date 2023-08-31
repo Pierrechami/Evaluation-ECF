@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,6 +40,7 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         $user->setIsAccepted(true);
+        $user->setIsVerified(false);
         $user->setRoles(['ROLE_APPRENANT']);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,19 +74,26 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
+    public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        // validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+        $id = $request->query->get('id');
 
+        if (null === $id) {
             return $this->redirectToRoute('register_apprenant');
         }
+        $user = $userRepository->find($id);
 
-        return $this->redirectToRoute('app');
+        if (null === $user) {
+            return $this->redirectToRoute('app');
+        }
+
+        try {
+            $this->emailVerifier->handleEmailConfirmation($request, $user);
+        } catch (VerifyEmailExceptionInterface $exception) {
+            $this->addFlash('verify_email_error', $exception->getReason());
+            return $this->redirectToRoute('register_apprenant');
+        }
+        return $this->redirectToRoute('app'); // faire la redict vers 'login' quand ce sera bon
     }
 }

@@ -26,9 +26,9 @@ class AppFixtures extends Fixture
 
         // admin
         $admin = new User();
-        $admin->setEmail('');
+        $admin->setEmail('admin@gmail.com');
         $admin->setPseudo('admin');
-        $passwordAdmin = $this->hasher->hashPassword($admin, 'superAdmin');
+        $passwordAdmin = $this->hasher->hashPassword($admin, 'superAdmin12');
         $admin->setPassword($passwordAdmin);
         $admin->setIsAccepted(true);
         $admin->setRoles(['ROLE_ADMIN']);
@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
         $instructeurN = new User();
         $instructeurN->setEmail('instructeurnonvalide@gmail.com');
         $instructeurN->setRoles(['ROLE_POSTULANT']);
-        $passwordInstructeurN = $this->hasher->hashPassword($instructeurN, 'Instructeur');
+        $passwordInstructeurN = $this->hasher->hashPassword($instructeurN, 'superInstructeur12');
         $instructeurN->setPassword($passwordInstructeurN);
         $instructeurN->setFirstName($faker->firstName());
         $instructeurN->setName($faker->name());
@@ -53,7 +53,7 @@ class AppFixtures extends Fixture
         $instructeur = new User();
         $instructeur->setEmail('instructeur@gmail.com');
         $instructeur->setRoles(['ROLE_INSTRUCTEUR']);
-        $passwordInstructeur = $this->hasher->hashPassword($instructeur, 'Instructeur');
+        $passwordInstructeur = $this->hasher->hashPassword($instructeur, 'superInstructeur12');
         $instructeur->setPassword($passwordInstructeur);
         $instructeur->setFirstName($faker->firstName());
         $instructeur->setName($faker->name());
@@ -68,7 +68,7 @@ class AppFixtures extends Fixture
         $apprenant = new User();
         $apprenant->setEmail('apprenant@gmail.com');
         $apprenant->setRoles(['ROLE_APPRENANT']);
-        $passwordApprenant = $this->hasher->hashPassword($apprenant, 'Apprenant');
+        $passwordApprenant = $this->hasher->hashPassword($apprenant, 'superApprenant2');
         $apprenant->setPassword($passwordApprenant);
         $apprenant->setPseudo($faker->firstName());
         $apprenant->setIsAccepted(true);

@@ -17,15 +17,14 @@ class UserChecker implements UserCheckerInterface
             return;
         }
 
-        if (!$user->isVerified()) {
+        if (!$user->getIsVerified()) {
             throw new CustomUserMessageAccountStatusException('Vous devez vérifier votre adresse e-mail avant de pouvoir vous connecter.');
         }
-
     }
 
     public function checkPostAuth(UserInterface $user)
     {
-        // Aucune vérification après l'authentification n'est nécessaire dans notre cas
+
     }
 }
 

@@ -24,7 +24,6 @@ class FormationController extends AbstractController
     public function index(FormationRepository $formationRepository, ProgressRepository $progressRepository): Response
     {
         if ($this->getUser() !== null){
-
        $formationEnCours = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()] , 'formation_progress' => null , 'formation_finished' => null]);
        $formationTerminee = $progressRepository->findBy(['user' => ['id' => $this->getUser()->getId()], 'formation_finished' => true]);
 
@@ -33,7 +32,6 @@ class FormationController extends AbstractController
                 'formationEnCours' => $formationEnCours,
                 'formationTerminees' => $formationTerminee
             ]);
-
         }
 
         return $this->render('formation/index.html.twig', [
@@ -55,8 +53,6 @@ class FormationController extends AbstractController
             'formations' => $formationsInstructeur
         ]);
     }
-
-
 
     #[Route(path: '/new', name: 'app_formation_new', methods: ['GET', 'POST'])]
     public function new(Request $request, FormationRepository $formationRepository): Response
@@ -89,16 +85,12 @@ class FormationController extends AbstractController
                 } catch (FileException) {
                     $this->addFlash('error' , 'Vous n\avez pas rempli le formulaire correctement.  ');
                 }
-
-
                 $formation->setPicture($newFilename);
             }
             $formationRepository->add($formation);
 
-
             return $this->redirectToRoute('app_section_new', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('formation/new.html.twig', [
             'formation' => $formation,
             'form' => $form,
@@ -134,7 +126,7 @@ class FormationController extends AbstractController
         # Récupère toute les ligne du tableau de l'user avec la formation
         $Userlessons = $progressRepository->findBy(['user' => $this->getUser(), 'formation' => ['id' => $idformation], 'formation_finished' => null]);
 
-        if ($nombrelesson == 0){
+        if ($nombrelesson === 0){
             $pourcentageFormation = 0;
         }else{
             $pourcentageFormation = 100 * count($Userlessons) / $nombrelesson ;
@@ -178,8 +170,6 @@ class FormationController extends AbstractController
         ]);
     }
 
-
-
     #[Route(path: '/{id}/edit', name: 'app_formation_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Formation $formation, FormationRepository $formationRepository, $id): Response
     {
@@ -211,11 +201,9 @@ class FormationController extends AbstractController
     #[Route(path: '/{id}', name: 'app_formation_delete', methods: ['POST'])]
     public function delete(Request $request, Formation $formation, FormationRepository $formationRepository): Response
     {
-
         if ($this->isCsrfTokenValid('delete'.$formation->getId(), $request->request->get('_token'))) {
             $formationRepository->remove($formation);
         }
-
         return $this->redirectToRoute('app_formation_index', [], Response::HTTP_SEE_OTHER);
     }
 }
