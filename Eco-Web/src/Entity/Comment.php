@@ -28,8 +28,6 @@ class Comment
         return $this->id;
     }
 
-
-
     public function getContent(): ?string
     {
         return $this->content;

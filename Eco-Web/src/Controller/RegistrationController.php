@@ -39,11 +39,12 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
-        $user->setIsAccepted(true);
-        $user->setIsVerified(false);
-        $user->setRoles(['ROLE_APPRENANT']);
-
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $user->setIsAccepted(true);
+            $user->setIsVerified(false);
+            $user->setRoles(['ROLE_APPRENANT']);
+
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -53,6 +54,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
+
 
             // generate a signed url and email it to the users
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -67,23 +69,21 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('login');
         }
+
         return $this->render('registrationApprenant/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
     {
-
         $id = $request->query->get('id');
-
         if (null === $id) {
             return $this->redirectToRoute('register_apprenant');
         }
-        $user = $userRepository->find($id);
 
+        $user = $userRepository->find($id);
         if (null === $user) {
             return $this->redirectToRoute('app');
         }
@@ -94,6 +94,6 @@ class RegistrationController extends AbstractController
             $this->addFlash('verify_email_error', $exception->getReason());
             return $this->redirectToRoute('register_apprenant');
         }
-        return $this->redirectToRoute('app'); // faire la redict vers 'login' quand ce sera bon
+        return $this->redirectToRoute('app');
     }
 }

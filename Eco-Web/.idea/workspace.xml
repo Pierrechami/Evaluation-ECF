@@ -4,17 +4,32 @@
     <list default="true" id="6876aee5-be8a-4b89-92ed-b034e37c3690" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20230712132307.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20230830143852.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Formation/FormationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Formation/FormationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomePage/HomePageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomePage/HomePageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Login/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Login/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/Controller/Formation/FormationControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Controller/Formation/FormationControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20230830143852.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20230830143852.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/JS/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/JS/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/623214c8c64b1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/62347a8f4e1a7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/62347c06184b6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/623839b5452b0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/62383a08e4d75.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/623840c3cc7e9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/6238807b010f0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/623882d4b7644.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/624453d9cf051.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/624559e774440.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/62455adbcc88a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/624b0a218e4d5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/624b0a46ef1fb.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/625454e0426c9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/6255787f6dc1c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/625578e2a4cf8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/625d1f92d15a0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/64ae65a60991c.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/64ae77b2d4ee8.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Section/SectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Section/SectionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/EmailVerifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/EmailVerifier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/UserChecker.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/UserChecker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registrationApprenant/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registrationApprenant/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,17 +209,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "web-ide.project.structure",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;web-ide.project.structure&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
@@ -267,6 +282,7 @@
       <workItem from="1689601383516" duration="570000" />
       <workItem from="1690220549839" duration="17156000" />
       <workItem from="1693297328279" duration="16455000" />
+      <workItem from="1693926264134" duration="684000" />
     </task>
     <servers />
   </component>

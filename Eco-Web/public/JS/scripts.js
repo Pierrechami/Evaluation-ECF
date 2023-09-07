@@ -11,7 +11,7 @@ $(document).ready(function () {
     let formationTerminees = document.getElementById('formationsStatusTerminees')
 
     $("#search").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
+        let value = $(this).val().toLowerCase();
         $(".card").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
