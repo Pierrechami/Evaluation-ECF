@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
         $passwordAdmin = $this->hasher->hashPassword($admin, 'superAdmin12');
         $admin->setPassword($passwordAdmin);
         $admin->setIsAccepted(true);
+        $admin->setIsVerified(true);
         $admin->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($admin);
@@ -46,6 +47,7 @@ class AppFixtures extends Fixture
         $instructeurN->setProfilePicture('\Images\etudiant-pierre.png');
         $instructeurN->setDescriptionSpecialty($faker->words(3, true));
         $instructeurN->setIsAccepted(false);
+        $instructeurN->setIsVerified(false);
 
         $manager->persist($instructeurN);
 
@@ -60,6 +62,7 @@ class AppFixtures extends Fixture
         $instructeur->setProfilePicture('\Images\etudiant-pierre.png');
         $instructeur->setDescriptionSpecialty($faker->words(3, true));
         $instructeur->setIsAccepted(true);
+        $instructeur->setIsVerified(true);
 
         $manager->persist($instructeur);
 
@@ -72,6 +75,7 @@ class AppFixtures extends Fixture
         $apprenant->setPassword($passwordApprenant);
         $apprenant->setPseudo($faker->firstName());
         $apprenant->setIsAccepted(true);
+        $apprenant->setIsVerified(true);
 
         $manager->persist($apprenant);
 
@@ -126,11 +130,8 @@ class AppFixtures extends Fixture
                     $quiz->setNotGood3($faker->words(20, true));
 
                     $manager->persist($quiz);
-
                 }
             }
-
-
 
         }
 
@@ -142,10 +143,6 @@ class AppFixtures extends Fixture
         $finish->setFormationFinished(true);
 
         $manager->persist($finish);
-
-
-
-        /////
         $manager->flush();
     }
 }
