@@ -72,6 +72,7 @@ class AppFixtures extends Fixture
         $apprenant->setPassword($passwordApprenant);
         $apprenant->setPseudo($faker->firstName());
         $apprenant->setIsAccepted(true);
+        $apprenant->setIsVerified(true);
 
         $manager->persist($apprenant);
 

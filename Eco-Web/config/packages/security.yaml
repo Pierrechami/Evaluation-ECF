@@ -20,8 +20,8 @@ security:
         main:
             lazy: true
             provider: app_user_provider
-            pattern: ^/
-            user_checker: App\Security\UserChecker
+#            pattern: ^/
+#            user_checker: App\Security\UserChecker
 
             form_login:
                 login_path: login
